@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "version": "1.0",
+  "name": "Stoic Discipline Carousel",
+  "format": "carousel",
+  "input": {
+    "topic": "Stoic discipline in the face of chaos",
+    "numPosts": 1,
+    "slidesPerPost": 4,
+    "bgMode": "image",
+    "backgroundPrompt": "ancient obsidian marble colosseum in heavy fog, cinematic dark contrast, monochrome luxury lighting"
+  },
+  "theme": {
+    "fontProfile": "BigShoulders",
+    "watermark": "@stoic.archive"
+  },
+  "output": {
+    "directory": "./output/stoic_carousel",
+    "saveImages": true,
+    "generateCaptions": true
+  }
+}

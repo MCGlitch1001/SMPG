@@ -1,0 +1,105 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "smpg_generate_post",
+      "description": "Generate an aesthetic social media carousel or reel post with typography and dark cinematic backgrounds without needing a browser.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Core topic, vibe, or message to generate content about (e.g. 'Stoic discipline under pressure')"
+          },
+          "format": {
+            "type": "string",
+            "enum": ["carousel", "reel"],
+            "default": "carousel",
+            "description": "Post format: 'carousel' (1080x1080) or 'reel' (1080x1920)"
+          },
+          "slidesPerPost": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "default": 3,
+            "description": "Number of slides for carousels (default 3)"
+          },
+          "fontProfile": {
+            "type": "string",
+            "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
+            "default": "BigShoulders",
+            "description": "Typography style for the quote overlay"
+          },
+          "watermark": {
+            "type": "string",
+            "description": "Brand handle or tag e.g. @discipline.archive"
+          },
+          "quotes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Optional explicit list of quotes. If supplied, LLM quote generation is bypassed"
+          },
+          "bgMode": {
+            "type": "string",
+            "enum": ["image", "color"],
+            "default": "image",
+            "description": "Visual style: 'image' uses AI Flux generator, 'color' uses solid dark swatch"
+          }
+        },
+        "required": ["topic"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "smpg_run_workflow",
+      "description": "Execute an advanced declarative SMPG workflow specification JSON object.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "workflow": {
+            "type": "object",
+            "description": "The complete workflow object conforming to smpg.workflow schema"
+          }
+        },
+        "required": ["workflow"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "smpg_render_slide",
+      "description": "Low-level slide typesetting tool to render an individual slide with custom quote and background.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string",
+            "description": "The quote to typeset"
+          },
+          "format": {
+            "type": "string",
+            "enum": ["carousel", "reel"],
+            "default": "carousel"
+          },
+          "bgColor": {
+            "type": "string",
+            "default": "#09090b"
+          },
+          "fontProfile": {
+            "type": "string",
+            "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
+            "default": "BigShoulders"
+          },
+          "watermark": {
+            "type": "string",
+            "description": "Optional brand watermark"
+          }
+        },
+        "required": ["quote"]
+      }
+    }
+  }
+]
