@@ -1,0 +1,4020 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "models_list.json",
+      "file_type": "code",
+      "source_file": "models_list.json",
+      "source_location": "L1",
+      "community": 29,
+      "norm_label": "models_list.json",
+      "id": "models_list_json"
+    },
+    {
+      "label": "models_list_utf8.json",
+      "file_type": "code",
+      "source_file": "models_list_utf8.json",
+      "source_location": "L1",
+      "community": 27,
+      "norm_label": "models_list_utf8.json",
+      "id": "models_list_utf8_json"
+    },
+    {
+      "label": "models",
+      "file_type": "code",
+      "source_file": "models_list_utf8.json",
+      "source_location": "L2",
+      "community": 27,
+      "norm_label": "models",
+      "id": "smpg_models_list_utf8_models"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "package.json",
+      "id": "package_json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "community": 2,
+      "norm_label": "name",
+      "id": "smpg_package_name"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "community": 2,
+      "norm_label": "private",
+      "id": "smpg_package_private"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "community": 2,
+      "norm_label": "version",
+      "id": "smpg_package_version"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "community": 2,
+      "norm_label": "type",
+      "id": "smpg_package_type"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "community": 2,
+      "norm_label": "scripts",
+      "id": "smpg_package_scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "community": 2,
+      "norm_label": "dev",
+      "id": "smpg_package_scripts_dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "community": 2,
+      "norm_label": "build",
+      "id": "smpg_package_scripts_build"
+    },
+    {
+      "label": "preview",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "community": 2,
+      "norm_label": "preview",
+      "id": "smpg_package_scripts_preview"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "community": 2,
+      "norm_label": "dependencies",
+      "id": "smpg_package_dependencies"
+    },
+    {
+      "label": "lucide-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "community": 2,
+      "norm_label": "lucide-react",
+      "id": "smpg_package_dependencies_lucide_react"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "community": 2,
+      "norm_label": "react",
+      "id": "smpg_package_dependencies_react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "community": 2,
+      "norm_label": "react-dom",
+      "id": "smpg_package_dependencies_react_dom"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "community": 2,
+      "norm_label": "devdependencies",
+      "id": "smpg_package_devdependencies"
+    },
+    {
+      "label": "@vitejs/plugin-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "community": 2,
+      "norm_label": "@vitejs/plugin-react",
+      "id": "smpg_package_devdependencies_vitejs_plugin_react"
+    },
+    {
+      "label": "autoprefixer",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "community": 2,
+      "norm_label": "autoprefixer",
+      "id": "smpg_package_devdependencies_autoprefixer"
+    },
+    {
+      "label": "postcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "community": 2,
+      "norm_label": "postcss",
+      "id": "smpg_package_devdependencies_postcss"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "community": 2,
+      "norm_label": "tailwindcss",
+      "id": "smpg_package_devdependencies_tailwindcss"
+    },
+    {
+      "label": "vite",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "community": 2,
+      "norm_label": "vite",
+      "id": "smpg_package_devdependencies_vite"
+    },
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "tailwind.config.js",
+      "source_location": "L1",
+      "community": 30,
+      "norm_label": "tailwind.config.js",
+      "id": "tailwind_config_js"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "community": 31,
+      "norm_label": "vite.config.js",
+      "id": "vite_config_js"
+    },
+    {
+      "label": "manifest.json",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L1",
+      "community": 6,
+      "norm_label": "manifest.json",
+      "id": "old_manifest_json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L2",
+      "community": 6,
+      "norm_label": "name",
+      "id": "old_manifest_name"
+    },
+    {
+      "label": "short_name",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L3",
+      "community": 6,
+      "norm_label": "short_name",
+      "id": "old_manifest_short_name"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L4",
+      "community": 6,
+      "norm_label": "description",
+      "id": "old_manifest_description"
+    },
+    {
+      "label": "start_url",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L5",
+      "community": 6,
+      "norm_label": "start_url",
+      "id": "old_manifest_start_url"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L6",
+      "community": 6,
+      "norm_label": "display",
+      "id": "old_manifest_display"
+    },
+    {
+      "label": "background_color",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L7",
+      "community": 6,
+      "norm_label": "background_color",
+      "id": "old_manifest_background_color"
+    },
+    {
+      "label": "theme_color",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L8",
+      "community": 6,
+      "norm_label": "theme_color",
+      "id": "old_manifest_theme_color"
+    },
+    {
+      "label": "icons",
+      "file_type": "code",
+      "source_file": "old/manifest.json",
+      "source_location": "L9",
+      "community": 6,
+      "norm_label": "icons",
+      "id": "old_manifest_icons"
+    },
+    {
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "script.js",
+      "id": "old_script_js"
+    },
+    {
+      "label": "state",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "state",
+      "id": "old_script_state"
+    },
+    {
+      "label": "debounce()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L6",
+      "community": 1,
+      "norm_label": "debounce()",
+      "id": "old_script_debounce"
+    },
+    {
+      "label": "debouncedSaveState",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L13",
+      "community": 1,
+      "norm_label": "debouncedsavestate",
+      "id": "old_script_debouncedsavestate"
+    },
+    {
+      "label": "DEFAULT_PRESETS",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L23",
+      "community": 1,
+      "norm_label": "default_presets",
+      "id": "old_script_default_presets"
+    },
+    {
+      "label": "loadState()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L36",
+      "community": 1,
+      "norm_label": "loadstate()",
+      "id": "old_script_loadstate"
+    },
+    {
+      "label": "saveState()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L67",
+      "community": 1,
+      "norm_label": "savestate()",
+      "id": "old_script_savestate"
+    },
+    {
+      "label": "loadPresets()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L84",
+      "community": 1,
+      "norm_label": "loadpresets()",
+      "id": "old_script_loadpresets"
+    },
+    {
+      "label": "applyPreset()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L101",
+      "community": 1,
+      "norm_label": "applypreset()",
+      "id": "old_script_applypreset"
+    },
+    {
+      "label": "setupEventListeners()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L118",
+      "community": 1,
+      "norm_label": "setupeventlisteners()",
+      "id": "old_script_setupeventlisteners"
+    },
+    {
+      "label": "renderGlobalThemeControls()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L179",
+      "community": 1,
+      "norm_label": "renderglobalthemecontrols()",
+      "id": "old_script_renderglobalthemecontrols"
+    },
+    {
+      "label": "applyGlobalTheme()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L201",
+      "community": 1,
+      "norm_label": "applyglobaltheme()",
+      "id": "old_script_applyglobaltheme"
+    },
+    {
+      "label": "renderBgRows()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L213",
+      "community": 1,
+      "norm_label": "renderbgrows()",
+      "id": "old_script_renderbgrows"
+    },
+    {
+      "label": "PRESET_COLORS",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L245",
+      "community": 1,
+      "norm_label": "preset_colors",
+      "id": "old_script_preset_colors"
+    },
+    {
+      "label": "createColorPresets()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L246",
+      "community": 1,
+      "norm_label": "createcolorpresets()",
+      "id": "old_script_createcolorpresets"
+    },
+    {
+      "label": "createTextPresets()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L279",
+      "community": 1,
+      "norm_label": "createtextpresets()",
+      "id": "old_script_createtextpresets"
+    },
+    {
+      "label": "getContrastColor()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L324",
+      "community": 1,
+      "norm_label": "getcontrastcolor()",
+      "id": "old_script_getcontrastcolor"
+    },
+    {
+      "label": "generatePosts()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L332",
+      "community": 1,
+      "norm_label": "generateposts()",
+      "id": "old_script_generateposts"
+    },
+    {
+      "label": "drawCanvas()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L384",
+      "community": 1,
+      "norm_label": "drawcanvas()",
+      "id": "old_script_drawcanvas"
+    },
+    {
+      "label": "drawVerifiedBadge()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L478",
+      "community": 1,
+      "norm_label": "drawverifiedbadge()",
+      "id": "old_script_drawverifiedbadge"
+    },
+    {
+      "label": "handleUpload()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L493",
+      "community": 1,
+      "norm_label": "handleupload()",
+      "id": "old_script_handleupload"
+    },
+    {
+      "label": "loadImage()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L499",
+      "community": 1,
+      "norm_label": "loadimage()",
+      "id": "old_script_loadimage"
+    },
+    {
+      "label": "addPreview()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L508",
+      "community": 1,
+      "norm_label": "addpreview()",
+      "id": "old_script_addpreview"
+    },
+    {
+      "label": "setupDownload()",
+      "file_type": "code",
+      "source_file": "old/script.js",
+      "source_location": "L524",
+      "community": 1,
+      "norm_label": "setupdownload()",
+      "id": "old_script_setupdownload"
+    },
+    {
+      "label": "sw.js",
+      "file_type": "code",
+      "source_file": "old/sw.js",
+      "source_location": "L1",
+      "community": 25,
+      "norm_label": "sw.js",
+      "id": "old_sw_js"
+    },
+    {
+      "label": "ASSETS_TO_CACHE",
+      "file_type": "code",
+      "source_file": "old/sw.js",
+      "source_location": "L3",
+      "community": 25,
+      "norm_label": "assets_to_cache",
+      "id": "old_sw_assets_to_cache"
+    },
+    {
+      "label": "minify_assets.py",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "minify_assets.py",
+      "id": "old_execution_minify_assets_py"
+    },
+    {
+      "label": "parse_arguments()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L16",
+      "community": 7,
+      "norm_label": "parse_arguments()",
+      "id": "execution_minify_assets_parse_arguments"
+    },
+    {
+      "label": "run_command()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L21",
+      "community": 7,
+      "norm_label": "run_command()",
+      "id": "execution_minify_assets_run_command"
+    },
+    {
+      "label": "clean_dest()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L28",
+      "community": 7,
+      "norm_label": "clean_dest()",
+      "id": "execution_minify_assets_clean_dest"
+    },
+    {
+      "label": "copy_assets()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L34",
+      "community": 7,
+      "norm_label": "copy_assets()",
+      "id": "execution_minify_assets_copy_assets"
+    },
+    {
+      "label": "optimize_images()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L60",
+      "community": 7,
+      "norm_label": "optimize_images()",
+      "id": "execution_minify_assets_optimize_images"
+    },
+    {
+      "label": "minify_content()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L80",
+      "community": 7,
+      "norm_label": "minify_content()",
+      "id": "execution_minify_assets_minify_content"
+    },
+    {
+      "label": "generate_sitemap_robots()",
+      "file_type": "code",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L122",
+      "community": 7,
+      "norm_label": "generate_sitemap_robots()",
+      "id": "execution_minify_assets_generate_sitemap_robots"
+    },
+    {
+      "label": "manifest.json",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "manifest.json",
+      "id": "old_live_manifest_json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L2",
+      "community": 5,
+      "norm_label": "name",
+      "id": "live_manifest_name"
+    },
+    {
+      "label": "short_name",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L3",
+      "community": 5,
+      "norm_label": "short_name",
+      "id": "live_manifest_short_name"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L4",
+      "community": 5,
+      "norm_label": "description",
+      "id": "live_manifest_description"
+    },
+    {
+      "label": "start_url",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L5",
+      "community": 5,
+      "norm_label": "start_url",
+      "id": "live_manifest_start_url"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L6",
+      "community": 5,
+      "norm_label": "display",
+      "id": "live_manifest_display"
+    },
+    {
+      "label": "background_color",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L7",
+      "community": 5,
+      "norm_label": "background_color",
+      "id": "live_manifest_background_color"
+    },
+    {
+      "label": "theme_color",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L8",
+      "community": 5,
+      "norm_label": "theme_color",
+      "id": "live_manifest_theme_color"
+    },
+    {
+      "label": "icons",
+      "file_type": "code",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L9",
+      "community": 5,
+      "norm_label": "icons",
+      "id": "live_manifest_icons"
+    },
+    {
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "script.js",
+      "id": "old_live_script_js"
+    },
+    {
+      "label": "state",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "state",
+      "id": "live_script_state"
+    },
+    {
+      "label": "debounce()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L6",
+      "community": 0,
+      "norm_label": "debounce()",
+      "id": "live_script_debounce"
+    },
+    {
+      "label": "debouncedSaveState",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L13",
+      "community": 0,
+      "norm_label": "debouncedsavestate",
+      "id": "live_script_debouncedsavestate"
+    },
+    {
+      "label": "DEFAULT_PRESETS",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L23",
+      "community": 0,
+      "norm_label": "default_presets",
+      "id": "live_script_default_presets"
+    },
+    {
+      "label": "loadState()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L36",
+      "community": 0,
+      "norm_label": "loadstate()",
+      "id": "live_script_loadstate"
+    },
+    {
+      "label": "saveState()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L67",
+      "community": 0,
+      "norm_label": "savestate()",
+      "id": "live_script_savestate"
+    },
+    {
+      "label": "loadPresets()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L84",
+      "community": 0,
+      "norm_label": "loadpresets()",
+      "id": "live_script_loadpresets"
+    },
+    {
+      "label": "applyPreset()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L101",
+      "community": 0,
+      "norm_label": "applypreset()",
+      "id": "live_script_applypreset"
+    },
+    {
+      "label": "setupEventListeners()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L118",
+      "community": 0,
+      "norm_label": "setupeventlisteners()",
+      "id": "live_script_setupeventlisteners"
+    },
+    {
+      "label": "renderGlobalThemeControls()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L179",
+      "community": 0,
+      "norm_label": "renderglobalthemecontrols()",
+      "id": "live_script_renderglobalthemecontrols"
+    },
+    {
+      "label": "applyGlobalTheme()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L201",
+      "community": 0,
+      "norm_label": "applyglobaltheme()",
+      "id": "live_script_applyglobaltheme"
+    },
+    {
+      "label": "renderBgRows()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L213",
+      "community": 0,
+      "norm_label": "renderbgrows()",
+      "id": "live_script_renderbgrows"
+    },
+    {
+      "label": "PRESET_COLORS",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L245",
+      "community": 0,
+      "norm_label": "preset_colors",
+      "id": "live_script_preset_colors"
+    },
+    {
+      "label": "createColorPresets()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L246",
+      "community": 0,
+      "norm_label": "createcolorpresets()",
+      "id": "live_script_createcolorpresets"
+    },
+    {
+      "label": "createTextPresets()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L279",
+      "community": 0,
+      "norm_label": "createtextpresets()",
+      "id": "live_script_createtextpresets"
+    },
+    {
+      "label": "getContrastColor()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L324",
+      "community": 0,
+      "norm_label": "getcontrastcolor()",
+      "id": "live_script_getcontrastcolor"
+    },
+    {
+      "label": "generatePosts()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L332",
+      "community": 0,
+      "norm_label": "generateposts()",
+      "id": "live_script_generateposts"
+    },
+    {
+      "label": "drawCanvas()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L383",
+      "community": 0,
+      "norm_label": "drawcanvas()",
+      "id": "live_script_drawcanvas"
+    },
+    {
+      "label": "drawVerifiedBadge()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L477",
+      "community": 0,
+      "norm_label": "drawverifiedbadge()",
+      "id": "live_script_drawverifiedbadge"
+    },
+    {
+      "label": "handleUpload()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L492",
+      "community": 0,
+      "norm_label": "handleupload()",
+      "id": "live_script_handleupload"
+    },
+    {
+      "label": "loadImage()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L498",
+      "community": 0,
+      "norm_label": "loadimage()",
+      "id": "live_script_loadimage"
+    },
+    {
+      "label": "addPreview()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L507",
+      "community": 0,
+      "norm_label": "addpreview()",
+      "id": "live_script_addpreview"
+    },
+    {
+      "label": "setupDownload()",
+      "file_type": "code",
+      "source_file": "old/live/script.js",
+      "source_location": "L523",
+      "community": 0,
+      "norm_label": "setupdownload()",
+      "id": "live_script_setupdownload"
+    },
+    {
+      "label": "sw.js",
+      "file_type": "code",
+      "source_file": "old/live/sw.js",
+      "source_location": "L1",
+      "community": 23,
+      "norm_label": "sw.js",
+      "id": "old_live_sw_js"
+    },
+    {
+      "label": "ASSETS_TO_CACHE",
+      "file_type": "code",
+      "source_file": "old/live/sw.js",
+      "source_location": "L3",
+      "community": 23,
+      "norm_label": "assets_to_cache",
+      "id": "live_sw_assets_to_cache"
+    },
+    {
+      "label": "title_case_skill_name()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L189",
+      "community": 10,
+      "norm_label": "title_case_skill_name()",
+      "id": "skill_creator_init_skill_title_case_skill_name"
+    },
+    {
+      "label": "init_skill()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L194",
+      "community": 10,
+      "norm_label": "init_skill()",
+      "id": "skill_creator_init_skill_init_skill"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L273",
+      "community": 10,
+      "norm_label": "main()",
+      "id": "skill_creator_init_skill_main"
+    },
+    {
+      "label": "Convert hyphenated skill name to Title Case for display.",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L190",
+      "community": 10,
+      "norm_label": "convert hyphenated skill name to title case for display.",
+      "id": "skill_creator_init_skill_rationale_190"
+    },
+    {
+      "label": "Initialize a new skill directory with template SKILL.md.      Args:         skil",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L195",
+      "community": 10,
+      "norm_label": "initialize a new skill directory with template skill.md.      args:         skil",
+      "id": "skill_creator_init_skill_rationale_195"
+    },
+    {
+      "label": "# TODO: Add actual script logic here",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L119",
+      "community": 10,
+      "norm_label": "# todo: add actual script logic here",
+      "id": "skill_creator_init_skill_rationale_119"
+    },
+    {
+      "label": "package_skill()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L19",
+      "community": 8,
+      "norm_label": "package_skill()",
+      "id": "skill_creator_package_skill_package_skill"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L85",
+      "community": 8,
+      "norm_label": "main()",
+      "id": "skill_creator_package_skill_main"
+    },
+    {
+      "label": "Package a skill folder into a .skill file.      Args:         skill_path: Path t",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L20",
+      "community": 8,
+      "norm_label": "package a skill folder into a .skill file.      args:         skill_path: path t",
+      "id": "skill_creator_package_skill_rationale_20"
+    },
+    {
+      "label": "quick_validate.py",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/quick_validate.py",
+      "source_location": "L1",
+      "community": 8,
+      "norm_label": "quick_validate.py",
+      "id": "old_skill_assets_skill_creator_quick_validate_py"
+    },
+    {
+      "label": "validate_skill()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/skill-creator/quick_validate.py",
+      "source_location": "L12",
+      "community": 8,
+      "norm_label": "validate_skill()",
+      "id": "skill_creator_quick_validate_validate_skill"
+    },
+    {
+      "label": "Basic validation of a skill",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/skill-creator/quick_validate.py",
+      "source_location": "L13",
+      "community": 8,
+      "norm_label": "basic validation of a skill",
+      "id": "skill_creator_quick_validate_rationale_13"
+    },
+    {
+      "label": "console_logging.py",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/console_logging.py",
+      "source_location": "L1",
+      "community": 24,
+      "norm_label": "console_logging.py",
+      "id": "old_skill_assets_webapp_testing_console_logging_py"
+    },
+    {
+      "label": "handle_console_message()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/console_logging.py",
+      "source_location": "L14",
+      "community": 24,
+      "norm_label": "handle_console_message()",
+      "id": "webapp_testing_console_logging_handle_console_message"
+    },
+    {
+      "label": "element_discovery.py",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/element_discovery.py",
+      "source_location": "L1",
+      "community": 32,
+      "norm_label": "element_discovery.py",
+      "id": "old_skill_assets_webapp_testing_element_discovery_py"
+    },
+    {
+      "label": "static_html_automation.py",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/static_html_automation.py",
+      "source_location": "L1",
+      "community": 33,
+      "norm_label": "static_html_automation.py",
+      "id": "old_skill_assets_webapp_testing_static_html_automation_py"
+    },
+    {
+      "label": "with_server.py",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L1",
+      "community": 15,
+      "norm_label": "with_server.py",
+      "id": "old_skill_assets_webapp_testing_with_server_py"
+    },
+    {
+      "label": "is_server_ready()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L23",
+      "community": 15,
+      "norm_label": "is_server_ready()",
+      "id": "webapp_testing_with_server_is_server_ready"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L35",
+      "community": 15,
+      "norm_label": "main()",
+      "id": "webapp_testing_with_server_main"
+    },
+    {
+      "label": "Wait for server to be ready by polling the port.",
+      "file_type": "rationale",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L24",
+      "community": 15,
+      "norm_label": "wait for server to be ready by polling the port.",
+      "id": "webapp_testing_with_server_rationale_24"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "app.jsx",
+      "id": "src_app_jsx"
+    },
+    {
+      "label": "fetchWithRetry()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L7",
+      "community": 3,
+      "norm_label": "fetchwithretry()",
+      "id": "src_app_fetchwithretry"
+    },
+    {
+      "label": "loadExternalScript()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L29",
+      "community": 3,
+      "norm_label": "loadexternalscript()",
+      "id": "src_app_loadexternalscript"
+    },
+    {
+      "label": "VIBE_PRESETS",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L43",
+      "community": 3,
+      "norm_label": "vibe_presets",
+      "id": "src_app_vibe_presets"
+    },
+    {
+      "label": "PRO_PALETTE",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L56",
+      "community": 3,
+      "norm_label": "pro_palette",
+      "id": "src_app_pro_palette"
+    },
+    {
+      "label": "generateHoneycomb()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L64",
+      "community": 3,
+      "norm_label": "generatehoneycomb()",
+      "id": "src_app_generatehoneycomb"
+    },
+    {
+      "label": "hslToHex()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L92",
+      "community": 3,
+      "norm_label": "hsltohex()",
+      "id": "src_app_hsltohex"
+    },
+    {
+      "label": "CustomColorPicker()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L103",
+      "community": 3,
+      "norm_label": "customcolorpicker()",
+      "id": "src_app_customcolorpicker"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L194",
+      "community": 3,
+      "norm_label": "app()",
+      "id": "src_app_app"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "main.jsx",
+      "id": "src_main_jsx"
+    },
+    {
+      "label": "Social Media Post Generator by Dalvi Consultancy",
+      "file_type": "document",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 3,
+      "norm_label": "social media post generator by dalvi consultancy",
+      "id": "index_html"
+    },
+    {
+      "label": "The Antigravity Architect",
+      "file_type": "document",
+      "source_file": "old/AGENTS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 34,
+      "norm_label": "the antigravity architect",
+      "id": "old_AGENTS_md"
+    },
+    {
+      "label": "Social Media Post Generator | Create Beautiful Posts",
+      "file_type": "document",
+      "source_file": "old/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 35,
+      "norm_label": "social media post generator | create beautiful posts",
+      "id": "old_index_html"
+    },
+    {
+      "label": "Robots.txt for SMPG",
+      "file_type": "document",
+      "source_file": "old/robots.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 36,
+      "norm_label": "robots.txt for smpg",
+      "id": "old_robots_txt"
+    },
+    {
+      "label": "Unified Skills",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "unified skills",
+      "id": "old_unified-skills"
+    },
+    {
+      "label": "Brand Guidelines",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "brand guidelines",
+      "id": "old_brand-guidelines"
+    },
+    {
+      "label": "Canvas Design",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "canvas design",
+      "id": "old_canvas-design"
+    },
+    {
+      "label": "Frontend Design",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "frontend design",
+      "id": "old_frontend-design"
+    },
+    {
+      "label": "Skill Creator",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "skill creator",
+      "id": "old_skill-creator"
+    },
+    {
+      "label": "Web Application Testing",
+      "file_type": "document",
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "web application testing",
+      "id": "old_webapp-testing"
+    },
+    {
+      "label": "Favicon SVG",
+      "file_type": "image",
+      "source_file": "old/favicon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 37,
+      "norm_label": "favicon svg",
+      "id": "old_favicon-svg"
+    },
+    {
+      "label": "Logo SVG",
+      "file_type": "image",
+      "source_file": "old/logo.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 38,
+      "norm_label": "logo svg",
+      "id": "old_logo"
+    },
+    {
+      "label": "Social Media Post Generator | Create Beautiful Posts",
+      "file_type": "document",
+      "source_file": "old/live/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "SMPG",
+      "contributor": null,
+      "community": 20,
+      "norm_label": "social media post generator | create beautiful posts",
+      "id": "old_live_index_html"
+    },
+    {
+      "label": "Robots.txt for Social Media Post Generator",
+      "file_type": "document",
+      "source_file": "old/live/robots.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 20,
+      "norm_label": "robots.txt for social media post generator",
+      "id": "old_live_robots_txt"
+    },
+    {
+      "label": "favicon.svg",
+      "file_type": "image",
+      "source_file": "old/live/favicon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 39,
+      "norm_label": "favicon.svg",
+      "id": "old_live_favicon"
+    },
+    {
+      "label": "logo.svg",
+      "file_type": "image",
+      "source_file": "old/live/logo.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 21,
+      "norm_label": "logo.svg",
+      "id": "old_live_logo_svg"
+    },
+    {
+      "label": "logo.webp",
+      "file_type": "image",
+      "source_file": "old/live/logo.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 21,
+      "norm_label": "logo.webp",
+      "id": "old_live_logo_webp"
+    },
+    {
+      "label": "Apache License Version 2.0",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/brand-guidelines/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 19,
+      "norm_label": "apache license version 2.0",
+      "id": "license_apache_20"
+    },
+    {
+      "label": "SIL Open Font License Version 1.1",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/ArsenalSC-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 19,
+      "norm_label": "sil open font license version 1.1",
+      "id": "arsenalsc_ofl_11"
+    },
+    {
+      "label": "Big Shoulders Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/BigShoulders-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Big Shoulders Project Authors",
+      "contributor": null,
+      "community": 11,
+      "norm_label": "big shoulders font software",
+      "id": "bigshoulders_ofl"
+    },
+    {
+      "label": "Boldonse Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Boldonse-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Boldonse Project Authors",
+      "contributor": null,
+      "community": 11,
+      "norm_label": "boldonse font software",
+      "id": "boldonse_ofl"
+    },
+    {
+      "label": "Bricolage Grotesque Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/BricolageGrotesque-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Bricolage Grotesque Project Authors",
+      "contributor": null,
+      "community": 11,
+      "norm_label": "bricolage grotesque font software",
+      "id": "bricolagegrotesque_ofl"
+    },
+    {
+      "label": "Crimson Pro Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/CrimsonPro-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "community": 4,
+      "norm_label": "crimson pro font software",
+      "id": "canvas_design_crimsonpro_ofl"
+    },
+    {
+      "label": "DM Serif Display Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/DMSerifDisplay-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "community": 4,
+      "norm_label": "dm serif display font software",
+      "id": "canvas_design_dmserifdisplay_ofl"
+    },
+    {
+      "label": "Erica One Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/EricaOne-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "community": 4,
+      "norm_label": "erica one font software",
+      "id": "canvas_design_ericaone_ofl"
+    },
+    {
+      "label": "Geist Mono Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/GeistMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "community": 4,
+      "norm_label": "geist mono font software",
+      "id": "canvas_design_geistmono_ofl"
+    },
+    {
+      "label": "Gloock Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Gloock-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Gloock Project Authors",
+      "contributor": null,
+      "community": 16,
+      "norm_label": "gloock font software",
+      "id": "gloock_ofl"
+    },
+    {
+      "label": "IBMPlexMono Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/IBMPlexMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "IBM Corp.",
+      "contributor": null,
+      "community": 16,
+      "norm_label": "ibmplexmono font software",
+      "id": "ibmplexmono_ofl"
+    },
+    {
+      "label": "InstrumentSans Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/InstrumentSans-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Instrument Sans Project Authors",
+      "contributor": null,
+      "community": 16,
+      "norm_label": "instrumentsans font software",
+      "id": "instrumentsans_ofl"
+    },
+    {
+      "label": "Italiana Font",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Italiana-OFL.txt",
+      "source_location": null,
+      "source_url": "https://github.com/impallari/Libre-Baskerville",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 13,
+      "norm_label": "italiana font",
+      "id": "canvas_design_italiana_ofl"
+    },
+    {
+      "label": "Jura Font",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Jura-OFL.txt",
+      "source_location": null,
+      "source_url": "https://github.com/ossobuffo/jura",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 13,
+      "norm_label": "jura font",
+      "id": "canvas_design_jura_ofl"
+    },
+    {
+      "label": "JetBrains Mono Font",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/JetBrainsMono-OFL.txt",
+      "source_location": null,
+      "source_url": "https://github.com/JetBrains/JetBrainsMono",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 13,
+      "norm_label": "jetbrains mono font",
+      "id": "canvas_design_jetbrains_mono_ofl"
+    },
+    {
+      "label": "Apache License Version 2.0",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 22,
+      "norm_label": "apache license version 2.0",
+      "id": "old_live_skill_assets_canvas_design_license"
+    },
+    {
+      "label": "SIL Open Font License Version 1.1",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Lora-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 22,
+      "norm_label": "sil open font license version 1.1",
+      "id": "old_live_skill_assets_canvas_design_lora_ofl"
+    },
+    {
+      "label": "National Park Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/NationalPark-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The National Park Project Authors",
+      "contributor": null,
+      "community": 40,
+      "norm_label": "national park font software",
+      "id": "nationalpark_ofl"
+    },
+    {
+      "label": "Nothing You Could Do Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/NothingYouCouldDo-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Kimberly Geswein",
+      "contributor": null,
+      "community": 41,
+      "norm_label": "nothing you could do font software",
+      "id": "nothingyoucoulddo_ofl"
+    },
+    {
+      "label": "Outfit Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Outfit-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Outfit Project Authors",
+      "contributor": null,
+      "community": 42,
+      "norm_label": "outfit font software",
+      "id": "outfit_ofl"
+    },
+    {
+      "label": "Pixelify Sans Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/PixelifySans-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Pixelify Sans Project Authors",
+      "contributor": null,
+      "community": 18,
+      "norm_label": "pixelify sans font software",
+      "id": "pixelifysans_ofl"
+    },
+    {
+      "label": "Poiret One Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/PoiretOne-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Denis Masharov",
+      "contributor": null,
+      "community": 18,
+      "norm_label": "poiret one font software",
+      "id": "poiretone_ofl"
+    },
+    {
+      "label": "Red Hat Mono Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/RedHatMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Red Hat Project Authors",
+      "contributor": null,
+      "community": 18,
+      "norm_label": "red hat mono font software",
+      "id": "redhatmono_ofl"
+    },
+    {
+      "label": "Silkscreen Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Silkscreen-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "author": "The Silkscreen Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 26,
+      "norm_label": "silkscreen font software",
+      "id": "silkscreen_ofl"
+    },
+    {
+      "label": "Smiley Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Smiley-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "author": "The Smiley Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 26,
+      "norm_label": "smiley font software",
+      "id": "smiley_ofl"
+    },
+    {
+      "label": "Tektur Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/Tektur-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "author": "The Tektur Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 28,
+      "norm_label": "tektur font software",
+      "id": "tektur_ofl"
+    },
+    {
+      "label": "Work Sans Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/WorkSans-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2023-10-06T14:25:00Z",
+      "author": "The Work Sans Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 28,
+      "norm_label": "work sans font software",
+      "id": "worksans_ofl"
+    },
+    {
+      "label": "YoungSerif Open Font License",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/YoungSerif-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 17,
+      "norm_label": "youngserif open font license",
+      "id": "youngserif_ofl"
+    },
+    {
+      "label": "Apache License",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/skill-creator/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 43,
+      "norm_label": "apache license",
+      "id": "license_apache"
+    },
+    {
+      "label": "ArsenalSC Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/ArsenalSC-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Arsenal Project Authors (andrij.design@gmail.com)",
+      "contributor": null,
+      "community": 11,
+      "norm_label": "arsenalsc font software",
+      "id": "arsenalsc_ofl"
+    },
+    {
+      "label": "Boldonse Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Boldonse-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Boldonse Project Authors",
+      "contributor": null,
+      "community": 4,
+      "norm_label": "boldonse font software",
+      "id": "canvas_design_boldonse_ofl"
+    },
+    {
+      "label": "Bricolage Grotesque Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/BricolageGrotesque-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Bricolage Grotesque Project Authors",
+      "contributor": null,
+      "community": 4,
+      "norm_label": "bricolage grotesque font software",
+      "id": "canvas_design_bricolagegrotesque_ofl"
+    },
+    {
+      "label": "DM Mono Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/DMMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Geist Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 4,
+      "norm_label": "dm mono font software",
+      "id": "canvas_design_dmmono_ofl"
+    },
+    {
+      "label": "Gloock Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Gloock-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Gloock Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 4,
+      "norm_label": "gloock font software",
+      "id": "canvas_design_gloock_ofl"
+    },
+    {
+      "label": "Erica Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Erica-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Erica Project Authors",
+      "license": "SIL Open Font License, Version 1.1",
+      "community": 4,
+      "norm_label": "erica font software",
+      "id": "canvas_design_erica_ofl"
+    },
+    {
+      "label": "Italiana Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Italiana-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Santiago Orozco",
+      "contributor": null,
+      "community": 44,
+      "norm_label": "italiana font software",
+      "id": "italiana_ofl"
+    },
+    {
+      "label": "JetBrains Mono Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/JetBrainsMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The JetBrains Mono Project Authors",
+      "contributor": null,
+      "community": 45,
+      "norm_label": "jetbrains mono font software",
+      "id": "jetbrainsmono_ofl"
+    },
+    {
+      "label": "Jura Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Jura-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Jura Project Authors",
+      "contributor": null,
+      "community": 46,
+      "norm_label": "jura font software",
+      "id": "jura_ofl"
+    },
+    {
+      "label": "Libre Baskerville Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/LibreBaskerville-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Libre Baskerville Project Authors",
+      "contributor": null,
+      "community": 13,
+      "norm_label": "libre baskerville font software",
+      "id": "librebaskerville_ofl"
+    },
+    {
+      "label": "DM Mono Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/DMMono-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The DM Mono Project Authors",
+      "contributor": null,
+      "community": 47,
+      "norm_label": "dm mono font software",
+      "id": "dmmono_ofl"
+    },
+    {
+      "label": "Smooch Sans Font Software",
+      "file_type": "document",
+      "source_file": "old/live/skill-assets/canvas-design/SmoochSans-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "The Smooch Sans Project Authors",
+      "contributor": null,
+      "community": 48,
+      "norm_label": "smooch sans font software",
+      "id": "smoochsans_ofl"
+    },
+    {
+      "label": "Erica One Font Software",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/EricaOne-OFL.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "LatinoType Limitada (luciano@latinotype.com)",
+      "contributor": null,
+      "community": 49,
+      "norm_label": "erica one font software",
+      "id": "ericaone_ofl"
+    },
+    {
+      "label": "Apache License",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "apache license",
+      "id": "old_skill-assets_canvas-design_LICENSE.txt"
+    },
+    {
+      "label": "Apache License",
+      "file_type": "document",
+      "source_file": "old/skill-assets/frontend-design/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "apache license",
+      "id": "old_skill-assets_frontend-design_LICENSE.txt"
+    },
+    {
+      "label": "Apache License",
+      "file_type": "document",
+      "source_file": "old/skill-assets/skill-creator/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "apache license",
+      "id": "old_skill-assets_skill-creator_LICENSE.txt"
+    },
+    {
+      "label": "Apache License",
+      "file_type": "document",
+      "source_file": "old/skill-assets/webapp-testing/LICENSE.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "apache license",
+      "id": "old_skill-assets_webapp-testing_LICENSE.txt"
+    },
+    {
+      "label": "Lora-OFL.txt",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Lora-OFL.txt",
+      "community": 12,
+      "norm_label": "lora-ofl.txt",
+      "id": "canvas-design_Lora-OFL"
+    },
+    {
+      "label": "NationalPark-OFL.txt",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/NationalPark-OFL.txt",
+      "community": 12,
+      "norm_label": "nationalpark-ofl.txt",
+      "id": "canvas-design_NationalPark-OFL"
+    },
+    {
+      "label": "NothingYouCouldDo-OFL.txt",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/NothingYouCouldDo-OFL.txt",
+      "community": 12,
+      "norm_label": "nothingyoucoulddo-ofl.txt",
+      "id": "canvas-design_NothingYouCouldDo-OFL"
+    },
+    {
+      "label": "Outfit-OFL.txt",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Outfit-OFL.txt",
+      "community": 12,
+      "norm_label": "outfit-ofl.txt",
+      "id": "canvas-design_Outfit-OFL"
+    },
+    {
+      "label": "Pixelify Sans",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/PixelifySans-OFL.txt",
+      "community": 50,
+      "norm_label": "pixelify sans",
+      "id": "old_skill-assets_canvas-design_PixelifySans-OFL_txt"
+    },
+    {
+      "label": "Poiret One",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/PoiretOne-OFL.txt",
+      "community": 51,
+      "norm_label": "poiret one",
+      "id": "old_skill-assets_canvas-design_PoiretOne-OFL_txt"
+    },
+    {
+      "label": "Red Hat Mono",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/RedHatMono-OFL.txt",
+      "community": 52,
+      "norm_label": "red hat mono",
+      "id": "old_skill-assets_canvas-design_RedHatMono-OFL_txt"
+    },
+    {
+      "label": "Silkscreen",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Silkscreen-OFL.txt",
+      "community": 53,
+      "norm_label": "silkscreen",
+      "id": "old_skill-assets_canvas-design_Silkscreen-OFL_txt"
+    },
+    {
+      "label": "Smooch Sans",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/SmoochSans-OFL.txt",
+      "community": 54,
+      "norm_label": "smooch sans",
+      "id": "old_skill-assets_canvas-design_SmoochSans-OFL_txt"
+    },
+    {
+      "label": "Tektur",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/Tektur-OFL.txt",
+      "community": 55,
+      "norm_label": "tektur",
+      "id": "old_skill-assets_canvas-design_Tektur-OFL_txt"
+    },
+    {
+      "label": "Work Sans",
+      "file_type": "document",
+      "source_file": "old/skill-assets/canvas-design/WorkSans-OFL.txt",
+      "community": 56,
+      "norm_label": "work sans",
+      "id": "old_skill-assets_canvas-design_WorkSans-OFL_txt"
+    },
+    {
+      "label": "Output Patterns",
+      "file_type": "document",
+      "source_file": "old/skill-assets/skill-creator/output-patterns.md",
+      "community": 17,
+      "norm_label": "output patterns",
+      "id": "old_skill-assets_skill-creator_output-patterns"
+    },
+    {
+      "label": "Workflow Patterns",
+      "file_type": "document",
+      "source_file": "old/skill-assets/skill-creator/workflows.md",
+      "community": 17,
+      "norm_label": "workflow patterns",
+      "id": "old_skill-assets_skill-creator_workflows"
+    },
+    {
+      "label": "System",
+      "file_type": "code",
+      "source_file": "system.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 57,
+      "norm_label": "system",
+      "id": "system_node"
+    },
+    {
+      "label": "Human Readable Name",
+      "file_type": "concept",
+      "source_file": "relative/path",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 58,
+      "norm_label": "human readable name",
+      "id": "code_entity"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "models_list_utf8.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "models_list_utf8_json",
+      "target": "smpg_models_list_utf8_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_json",
+      "target": "smpg_package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_scripts",
+      "target": "smpg_package_scripts_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_scripts",
+      "target": "smpg_package_scripts_dev"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_scripts",
+      "target": "smpg_package_scripts_preview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_dependencies",
+      "target": "smpg_package_dependencies_lucide_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_dependencies",
+      "target": "smpg_package_dependencies_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_dependencies",
+      "target": "smpg_package_dependencies_react_dom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_devdependencies",
+      "target": "smpg_package_devdependencies_autoprefixer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_devdependencies",
+      "target": "smpg_package_devdependencies_postcss"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_devdependencies",
+      "target": "smpg_package_devdependencies_tailwindcss"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_devdependencies",
+      "target": "smpg_package_devdependencies_vite"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "smpg_package_devdependencies",
+      "target": "smpg_package_devdependencies_vitejs_plugin_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_background_color"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_description"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_display"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_short_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_start_url"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/manifest.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_manifest_json",
+      "target": "old_manifest_theme_color"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L508",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_addpreview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L201",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_applyglobaltheme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_applypreset"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L246",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_createcolorpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L279",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_createtextpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_debounce"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_debouncedsavestate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_default_presets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L384",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_drawcanvas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L478",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_drawverifiedbadge"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L332",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_generateposts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L324",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_getcontrastcolor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L493",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_handleupload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L499",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_loadimage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_loadpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_loadstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L245",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_preset_colors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L213",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_renderbgrows"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L179",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_renderglobalthemecontrols"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_savestate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L524",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_setupdownload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_setupeventlisteners"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_js",
+      "target": "old_script_state"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_loadstate",
+      "target": "old_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L211",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_applyglobaltheme",
+      "target": "old_script_savestate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_applypreset",
+      "target": "old_script_savestate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_applypreset",
+      "target": "old_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L209",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_applyglobaltheme",
+      "target": "old_script_renderglobalthemecontrols"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L210",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_applyglobaltheme",
+      "target": "old_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L228",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_renderbgrows",
+      "target": "old_script_createcolorpresets"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L235",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_renderbgrows",
+      "target": "old_script_createtextpresets"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L356",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_generateposts",
+      "target": "old_script_getcontrastcolor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_generateposts",
+      "target": "old_script_addpreview"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/script.js",
+      "source_location": "L366",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_script_generateposts",
+      "target": "old_script_drawcanvas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/sw.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_sw_js",
+      "target": "old_sw_assets_to_cache"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_clean_dest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_copy_assets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_generate_sitemap_robots"
+    },
+    {
+      "relation": "contains",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_minify_content"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_optimize_images"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_parse_arguments"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_execution_minify_assets_py",
+      "target": "execution_minify_assets_run_command"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/execution/minify_assets.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "execution_minify_assets_optimize_images",
+      "target": "execution_minify_assets_run_command"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_background_color"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_description"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_display"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_short_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_start_url"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/manifest.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_manifest_json",
+      "target": "live_manifest_theme_color"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L507",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_addpreview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L201",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_applyglobaltheme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_applypreset"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L246",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_createcolorpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L279",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_createtextpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_debounce"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_debouncedsavestate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_default_presets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L383",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_drawcanvas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L477",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_drawverifiedbadge"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L332",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_generateposts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L324",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_getcontrastcolor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L492",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_handleupload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L498",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_loadimage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_loadpresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_loadstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L245",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_preset_colors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L213",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_renderbgrows"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L179",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_renderglobalthemecontrols"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_savestate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L523",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_setupdownload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_setupeventlisteners"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_script_js",
+      "target": "live_script_state"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_loadstate",
+      "target": "live_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L211",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_applyglobaltheme",
+      "target": "live_script_savestate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_applypreset",
+      "target": "live_script_savestate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_applypreset",
+      "target": "live_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L209",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_applyglobaltheme",
+      "target": "live_script_renderglobalthemecontrols"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L210",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_applyglobaltheme",
+      "target": "live_script_renderbgrows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L228",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_renderbgrows",
+      "target": "live_script_createcolorpresets"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L235",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_renderbgrows",
+      "target": "live_script_createtextpresets"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L356",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_generateposts",
+      "target": "live_script_getcontrastcolor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_generateposts",
+      "target": "live_script_addpreview"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/script.js",
+      "source_location": "L366",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "live_script_generateposts",
+      "target": "live_script_drawcanvas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/live/sw.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_live_sw_js",
+      "target": "live_sw_assets_to_cache"
+    },
+    {
+      "relation": "contains",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_init_skill_init_skill",
+      "target": "skill_creator_init_skill_title_case_skill_name"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L190",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_init_skill_rationale_190",
+      "target": "skill_creator_init_skill_title_case_skill_name"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L294",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "skill_creator_init_skill_main",
+      "target": "skill_creator_init_skill_init_skill"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_init_skill_rationale_119",
+      "target": "skill_creator_init_skill_init_skill"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/init_skill.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_init_skill_rationale_195",
+      "target": "skill_creator_init_skill_init_skill"
+    },
+    {
+      "relation": "contains",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_package_skill_package_skill",
+      "target": "skill_creator_package_skill_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "skill_creator_package_skill_package_skill",
+      "target": "skill_creator_quick_validate_validate_skill"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/package_skill.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_package_skill_rationale_20",
+      "target": "skill_creator_package_skill_package_skill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/quick_validate.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_skill_assets_skill_creator_quick_validate_py",
+      "target": "skill_creator_quick_validate_validate_skill"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/skill-creator/quick_validate.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "skill_creator_quick_validate_rationale_13",
+      "target": "skill_creator_quick_validate_validate_skill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/webapp-testing/console_logging.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_skill_assets_webapp_testing_console_logging_py",
+      "target": "webapp_testing_console_logging_handle_console_message"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_skill_assets_webapp_testing_with_server_py",
+      "target": "webapp_testing_with_server_is_server_ready"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_skill_assets_webapp_testing_with_server_py",
+      "target": "webapp_testing_with_server_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "webapp_testing_with_server_main",
+      "target": "webapp_testing_with_server_is_server_ready"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "old/skill-assets/webapp-testing/with_server.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "webapp_testing_with_server_rationale_24",
+      "target": "webapp_testing_with_server_is_server_ready"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_customcolorpicker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_fetchwithretry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_generatehoneycomb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_hsltohex"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_loadexternalscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_pro_palette"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_vibe_presets"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main_jsx",
+      "target": "src_app_jsx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_generatehoneycomb",
+      "target": "src_app_hsltohex"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "src_main_jsx"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_unified-skills",
+      "target": "old_brand-guidelines"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_unified-skills",
+      "target": "old_canvas-design"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_unified-skills",
+      "target": "old_frontend-design"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_unified-skills",
+      "target": "old_skill-creator"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_unified-skills",
+      "target": "old_webapp-testing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "old/live/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_live_index_html",
+      "target": "old_live_robots_txt"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_live_logo_svg",
+      "target": "old_live_logo_webp"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "license_apache_20",
+      "target": "arsenalsc_ofl_11"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "arsenalsc_ofl",
+      "target": "bigshoulders_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "bigshoulders_ofl",
+      "target": "boldonse_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "bigshoulders_ofl",
+      "target": "bricolagegrotesque_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "boldonse_ofl",
+      "target": "bricolagegrotesque_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "canvas_design_boldonse_ofl",
+      "target": "canvas_design_crimsonpro_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "canvas_design_bricolagegrotesque_ofl",
+      "target": "canvas_design_crimsonpro_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_crimsonpro_ofl",
+      "target": "canvas_design_dmserifdisplay_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_crimsonpro_ofl",
+      "target": "canvas_design_ericaone_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_crimsonpro_ofl",
+      "target": "canvas_design_geistmono_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_dmserifdisplay_ofl",
+      "target": "canvas_design_ericaone_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_dmserifdisplay_ofl",
+      "target": "canvas_design_geistmono_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "canvas_design_ericaone_ofl",
+      "target": "canvas_design_geistmono_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_dmmono_ofl",
+      "target": "canvas_design_geistmono_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_geistmono_ofl",
+      "target": "canvas_design_erica_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_geistmono_ofl",
+      "target": "canvas_design_gloock_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "gloock_ofl",
+      "target": "ibmplexmono_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "gloock_ofl",
+      "target": "instrumentsans_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "ibmplexmono_ofl",
+      "target": "instrumentsans_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_italiana_ofl",
+      "target": "canvas_design_jetbrains_mono_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_italiana_ofl",
+      "target": "canvas_design_jura_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_italiana_ofl",
+      "target": "librebaskerville_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_jura_ofl",
+      "target": "canvas_design_jetbrains_mono_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_jura_ofl",
+      "target": "librebaskerville_ofl"
+    },
+    {
+      "type": "related_font",
+      "confidence_score": 1.0,
+      "source": "canvas_design_jetbrains_mono_ofl",
+      "target": "librebaskerville_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "old_live_skill_assets_canvas_design_license",
+      "target": "old_live_skill_assets_canvas_design_lora_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pixelifysans_ofl",
+      "target": "poiretone_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pixelifysans_ofl",
+      "target": "redhatmono_ofl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "poiretone_ofl",
+      "target": "redhatmono_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "silkscreen_ofl",
+      "target": "smiley_ofl"
+    },
+    {
+      "type": "related_font_license",
+      "description": "Both fonts are licensed under the SIL Open Font License, Version 1.1.",
+      "confidence_score": 1.0,
+      "source": "tektur_ofl",
+      "target": "worksans_ofl"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "old/skill-assets/canvas-design/YoungSerif-OFL.txt",
+      "source": "youngserif_ofl",
+      "target": "old_skill-assets_skill-creator_output-patterns"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "source_location": null,
+      "weight": 1.0,
+      "source": "canvas_design_boldonse_ofl",
+      "target": "canvas_design_bricolagegrotesque_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_dmmono_ofl",
+      "target": "canvas_design_erica_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_dmmono_ofl",
+      "target": "canvas_design_gloock_ofl"
+    },
+    {
+      "relation": "similar_license",
+      "confidence_score": 1.0,
+      "source": "canvas_design_gloock_ofl",
+      "target": "canvas_design_erica_ofl"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_canvas-design_LICENSE.txt",
+      "target": "old_skill-assets_frontend-design_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_canvas-design_LICENSE.txt",
+      "target": "old_skill-assets_skill-creator_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_canvas-design_LICENSE.txt",
+      "target": "old_skill-assets_webapp-testing_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_frontend-design_LICENSE.txt",
+      "target": "old_skill-assets_skill-creator_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_frontend-design_LICENSE.txt",
+      "target": "old_skill-assets_webapp-testing_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "weight": 1.0,
+      "source": "old_skill-assets_skill-creator_LICENSE.txt",
+      "target": "old_skill-assets_webapp-testing_LICENSE.txt"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_Lora-OFL",
+      "target": "canvas-design_NationalPark-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_Lora-OFL",
+      "target": "canvas-design_NothingYouCouldDo-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_Lora-OFL",
+      "target": "canvas-design_Outfit-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_NationalPark-OFL",
+      "target": "canvas-design_NothingYouCouldDo-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_NationalPark-OFL",
+      "target": "canvas-design_Outfit-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "canvas-design_NothingYouCouldDo-OFL",
+      "target": "canvas-design_Outfit-OFL"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "old/skill-assets/skill-creator/output-patterns.md",
+      "source": "old_skill-assets_skill-creator_output-patterns",
+      "target": "old_skill-assets_skill-creator_workflows"
+    }
+  ],
+  "hyperedges": []
+}

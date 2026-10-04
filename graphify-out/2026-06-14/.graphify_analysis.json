@@ -1,0 +1,506 @@
+{
+  "communities": {
+    "0": [
+      "live_script_addpreview",
+      "live_script_applyglobaltheme",
+      "live_script_applypreset",
+      "live_script_createcolorpresets",
+      "live_script_createtextpresets",
+      "live_script_debounce",
+      "live_script_debouncedsavestate",
+      "live_script_default_presets",
+      "live_script_drawcanvas",
+      "live_script_drawverifiedbadge",
+      "live_script_generateposts",
+      "live_script_getcontrastcolor",
+      "live_script_handleupload",
+      "live_script_loadimage",
+      "live_script_loadpresets",
+      "live_script_loadstate",
+      "live_script_preset_colors",
+      "live_script_renderbgrows",
+      "live_script_renderglobalthemecontrols",
+      "live_script_savestate",
+      "live_script_setupdownload",
+      "live_script_setupeventlisteners",
+      "live_script_state",
+      "old_live_script_js"
+    ],
+    "1": [
+      "old_script_addpreview",
+      "old_script_applyglobaltheme",
+      "old_script_applypreset",
+      "old_script_createcolorpresets",
+      "old_script_createtextpresets",
+      "old_script_debounce",
+      "old_script_debouncedsavestate",
+      "old_script_default_presets",
+      "old_script_drawcanvas",
+      "old_script_drawverifiedbadge",
+      "old_script_generateposts",
+      "old_script_getcontrastcolor",
+      "old_script_handleupload",
+      "old_script_js",
+      "old_script_loadimage",
+      "old_script_loadpresets",
+      "old_script_loadstate",
+      "old_script_preset_colors",
+      "old_script_renderbgrows",
+      "old_script_renderglobalthemecontrols",
+      "old_script_savestate",
+      "old_script_setupdownload",
+      "old_script_setupeventlisteners",
+      "old_script_state"
+    ],
+    "2": [
+      "package_json",
+      "smpg_package_dependencies",
+      "smpg_package_dependencies_lucide_react",
+      "smpg_package_dependencies_react",
+      "smpg_package_dependencies_react_dom",
+      "smpg_package_devdependencies",
+      "smpg_package_devdependencies_autoprefixer",
+      "smpg_package_devdependencies_postcss",
+      "smpg_package_devdependencies_tailwindcss",
+      "smpg_package_devdependencies_vite",
+      "smpg_package_devdependencies_vitejs_plugin_react",
+      "smpg_package_name",
+      "smpg_package_private",
+      "smpg_package_scripts",
+      "smpg_package_scripts_build",
+      "smpg_package_scripts_dev",
+      "smpg_package_scripts_preview",
+      "smpg_package_type",
+      "smpg_package_version"
+    ],
+    "3": [
+      "index_html",
+      "src_app_app",
+      "src_app_customcolorpicker",
+      "src_app_fetchwithretry",
+      "src_app_generatehoneycomb",
+      "src_app_hsltohex",
+      "src_app_jsx",
+      "src_app_loadexternalscript",
+      "src_app_pro_palette",
+      "src_app_vibe_presets",
+      "src_main_jsx"
+    ],
+    "4": [
+      "canvas_design_boldonse_ofl",
+      "canvas_design_bricolagegrotesque_ofl",
+      "canvas_design_crimsonpro_ofl",
+      "canvas_design_dmmono_ofl",
+      "canvas_design_dmserifdisplay_ofl",
+      "canvas_design_erica_ofl",
+      "canvas_design_ericaone_ofl",
+      "canvas_design_geistmono_ofl",
+      "canvas_design_gloock_ofl"
+    ],
+    "5": [
+      "live_manifest_background_color",
+      "live_manifest_description",
+      "live_manifest_display",
+      "live_manifest_icons",
+      "live_manifest_name",
+      "live_manifest_short_name",
+      "live_manifest_start_url",
+      "live_manifest_theme_color",
+      "old_live_manifest_json"
+    ],
+    "6": [
+      "old_manifest_background_color",
+      "old_manifest_description",
+      "old_manifest_display",
+      "old_manifest_icons",
+      "old_manifest_json",
+      "old_manifest_name",
+      "old_manifest_short_name",
+      "old_manifest_start_url",
+      "old_manifest_theme_color"
+    ],
+    "7": [
+      "execution_minify_assets_clean_dest",
+      "execution_minify_assets_copy_assets",
+      "execution_minify_assets_generate_sitemap_robots",
+      "execution_minify_assets_minify_content",
+      "execution_minify_assets_optimize_images",
+      "execution_minify_assets_parse_arguments",
+      "execution_minify_assets_run_command",
+      "old_execution_minify_assets_py"
+    ],
+    "8": [
+      "old_skill_assets_skill_creator_quick_validate_py",
+      "skill_creator_package_skill_main",
+      "skill_creator_package_skill_package_skill",
+      "skill_creator_package_skill_rationale_20",
+      "skill_creator_quick_validate_rationale_13",
+      "skill_creator_quick_validate_validate_skill"
+    ],
+    "9": [
+      "old_brand-guidelines",
+      "old_canvas-design",
+      "old_frontend-design",
+      "old_skill-creator",
+      "old_unified-skills",
+      "old_webapp-testing"
+    ],
+    "10": [
+      "skill_creator_init_skill_init_skill",
+      "skill_creator_init_skill_main",
+      "skill_creator_init_skill_rationale_119",
+      "skill_creator_init_skill_rationale_190",
+      "skill_creator_init_skill_rationale_195",
+      "skill_creator_init_skill_title_case_skill_name"
+    ],
+    "11": [
+      "arsenalsc_ofl",
+      "bigshoulders_ofl",
+      "boldonse_ofl",
+      "bricolagegrotesque_ofl"
+    ],
+    "12": [
+      "canvas-design_Lora-OFL",
+      "canvas-design_NationalPark-OFL",
+      "canvas-design_NothingYouCouldDo-OFL",
+      "canvas-design_Outfit-OFL"
+    ],
+    "13": [
+      "canvas_design_italiana_ofl",
+      "canvas_design_jetbrains_mono_ofl",
+      "canvas_design_jura_ofl",
+      "librebaskerville_ofl"
+    ],
+    "14": [
+      "old_skill-assets_canvas-design_LICENSE.txt",
+      "old_skill-assets_frontend-design_LICENSE.txt",
+      "old_skill-assets_skill-creator_LICENSE.txt",
+      "old_skill-assets_webapp-testing_LICENSE.txt"
+    ],
+    "15": [
+      "old_skill_assets_webapp_testing_with_server_py",
+      "webapp_testing_with_server_is_server_ready",
+      "webapp_testing_with_server_main",
+      "webapp_testing_with_server_rationale_24"
+    ],
+    "16": [
+      "gloock_ofl",
+      "ibmplexmono_ofl",
+      "instrumentsans_ofl"
+    ],
+    "17": [
+      "old_skill-assets_skill-creator_output-patterns",
+      "old_skill-assets_skill-creator_workflows",
+      "youngserif_ofl"
+    ],
+    "18": [
+      "pixelifysans_ofl",
+      "poiretone_ofl",
+      "redhatmono_ofl"
+    ],
+    "19": [
+      "arsenalsc_ofl_11",
+      "license_apache_20"
+    ],
+    "20": [
+      "old_live_index_html",
+      "old_live_robots_txt"
+    ],
+    "21": [
+      "old_live_logo_svg",
+      "old_live_logo_webp"
+    ],
+    "22": [
+      "old_live_skill_assets_canvas_design_license",
+      "old_live_skill_assets_canvas_design_lora_ofl"
+    ],
+    "23": [
+      "live_sw_assets_to_cache",
+      "old_live_sw_js"
+    ],
+    "24": [
+      "old_skill_assets_webapp_testing_console_logging_py",
+      "webapp_testing_console_logging_handle_console_message"
+    ],
+    "25": [
+      "old_sw_assets_to_cache",
+      "old_sw_js"
+    ],
+    "26": [
+      "silkscreen_ofl",
+      "smiley_ofl"
+    ],
+    "27": [
+      "models_list_utf8_json",
+      "smpg_models_list_utf8_models"
+    ],
+    "28": [
+      "tektur_ofl",
+      "worksans_ofl"
+    ],
+    "29": [
+      "models_list_json"
+    ],
+    "30": [
+      "tailwind_config_js"
+    ],
+    "31": [
+      "vite_config_js"
+    ],
+    "32": [
+      "old_skill_assets_webapp_testing_element_discovery_py"
+    ],
+    "33": [
+      "old_skill_assets_webapp_testing_static_html_automation_py"
+    ],
+    "34": [
+      "old_AGENTS_md"
+    ],
+    "35": [
+      "old_index_html"
+    ],
+    "36": [
+      "old_robots_txt"
+    ],
+    "37": [
+      "old_favicon-svg"
+    ],
+    "38": [
+      "old_logo"
+    ],
+    "39": [
+      "old_live_favicon"
+    ],
+    "40": [
+      "nationalpark_ofl"
+    ],
+    "41": [
+      "nothingyoucoulddo_ofl"
+    ],
+    "42": [
+      "outfit_ofl"
+    ],
+    "43": [
+      "license_apache"
+    ],
+    "44": [
+      "italiana_ofl"
+    ],
+    "45": [
+      "jetbrainsmono_ofl"
+    ],
+    "46": [
+      "jura_ofl"
+    ],
+    "47": [
+      "dmmono_ofl"
+    ],
+    "48": [
+      "smoochsans_ofl"
+    ],
+    "49": [
+      "ericaone_ofl"
+    ],
+    "50": [
+      "old_skill-assets_canvas-design_PixelifySans-OFL_txt"
+    ],
+    "51": [
+      "old_skill-assets_canvas-design_PoiretOne-OFL_txt"
+    ],
+    "52": [
+      "old_skill-assets_canvas-design_RedHatMono-OFL_txt"
+    ],
+    "53": [
+      "old_skill-assets_canvas-design_Silkscreen-OFL_txt"
+    ],
+    "54": [
+      "old_skill-assets_canvas-design_SmoochSans-OFL_txt"
+    ],
+    "55": [
+      "old_skill-assets_canvas-design_Tektur-OFL_txt"
+    ],
+    "56": [
+      "old_skill-assets_canvas-design_WorkSans-OFL_txt"
+    ],
+    "57": [
+      "system_node"
+    ],
+    "58": [
+      "code_entity"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12318840579710146,
+    "1": 0.12318840579710146,
+    "2": 0.10526315789473684,
+    "3": 0.2,
+    "4": 0.4166666666666667,
+    "5": 0.2222222222222222,
+    "6": 0.2222222222222222,
+    "7": 0.2857142857142857,
+    "8": 0.3333333333333333,
+    "9": 0.3333333333333333,
+    "10": 0.3333333333333333,
+    "11": 0.6666666666666666,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 0.6666666666666666,
+    "16": 1.0,
+    "17": 0.6666666666666666,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0
+  },
+  "gods": [
+    {
+      "id": "old_script_renderbgrows",
+      "label": "renderBgRows()",
+      "degree": 6
+    },
+    {
+      "id": "live_script_renderbgrows",
+      "label": "renderBgRows()",
+      "degree": 6
+    },
+    {
+      "id": "canvas_design_geistmono_ofl",
+      "label": "Geist Mono Font Software",
+      "degree": 6
+    },
+    {
+      "id": "old_unified-skills",
+      "label": "Unified Skills",
+      "degree": 5
+    },
+    {
+      "id": "canvas_design_crimsonpro_ofl",
+      "label": "Crimson Pro Font Software",
+      "degree": 5
+    },
+    {
+      "id": "smpg_package_scripts",
+      "label": "scripts",
+      "degree": 4
+    },
+    {
+      "id": "old_script_applyglobaltheme",
+      "label": "applyGlobalTheme()",
+      "degree": 4
+    },
+    {
+      "id": "old_script_generateposts",
+      "label": "generatePosts()",
+      "degree": 4
+    },
+    {
+      "id": "live_script_applyglobaltheme",
+      "label": "applyGlobalTheme()",
+      "degree": 4
+    },
+    {
+      "id": "live_script_generateposts",
+      "label": "generatePosts()",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Boldonse Font Software",
+      "target": "Crimson Pro Font Software",
+      "source_files": [
+        "old/skill-assets/canvas-design/Boldonse-OFL.txt",
+        "old/live/skill-assets/canvas-design/CrimsonPro-OFL.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `Boldonse Font Software` unexpectedly reaches hub `Crimson Pro Font Software`"
+    },
+    {
+      "source": "Bricolage Grotesque Font Software",
+      "target": "Crimson Pro Font Software",
+      "source_files": [
+        "old/skill-assets/canvas-design/BricolageGrotesque-OFL.txt",
+        "old/live/skill-assets/canvas-design/CrimsonPro-OFL.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `Bricolage Grotesque Font Software` unexpectedly reaches hub `Crimson Pro Font Software`"
+    },
+    {
+      "source": "package_skill()",
+      "target": "validate_skill()",
+      "source_files": [
+        "old/skill-assets/skill-creator/package_skill.py",
+        "old/skill-assets/skill-creator/quick_validate.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "Apache License Version 2.0",
+      "target": "SIL Open Font License Version 1.1",
+      "source_files": [
+        "old/live/skill-assets/brand-guidelines/LICENSE.txt",
+        "old/live/skill-assets/canvas-design/ArsenalSC-OFL.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "ArsenalSC Font Software",
+      "target": "Big Shoulders Font Software",
+      "source_files": [
+        "old/skill-assets/canvas-design/ArsenalSC-OFL.txt",
+        "old/live/skill-assets/canvas-design/BigShoulders-OFL.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source"
+    }
+  ],
+  "tokens": {
+    "input": 301,
+    "output": 187
+  }
+}
