@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { resolveApiKey } from './config.js';
+import { getQuotesFromDatabase } from './database.js';
 
 const HISTORY_FILE = path.resolve(process.cwd(), '.smpg_history.json');
 
@@ -25,35 +27,40 @@ export function saveUsedQuotes(newQuotes) {
     }
 }
 
-// Built-in fallback quote bank for offline/agent testing when no API key is set
-const FALLBACK_BANK = {
-    stoic: [
-        ["WE SUFFER MORE OFTEN IN IMAGINATION THAN IN REALITY.", "CONTROL WHAT YOU CAN. DISMISS THE REST.", "THE OBSTACLE DOES NOT STOP THE PATH. IT IS THE PATH."],
-        ["SUFFER IN SILENCE. WORK IN THE DARK.", "LET THEM SPECULATE WHILE YOU EXECUTE.", "TRUE DISCIPLINE NEEDS NO AUDIENCE."]
-    ],
-    discipline: [
-        ["DISCIPLINE IS CHOOSING BETWEEN WHAT YOU WANT NOW AND WHAT YOU WANT MOST.", "MOTIVATION GETS YOU STARTED. RUTHLESS HABIT KEEPS YOU GOING.", "DO WHAT MUST BE DONE, REGARDLESS OF EMOTION."],
-        ["THE PRICE OF EXCELLENCE IS CONSTANT VIGILANCE.", "COMFORT IS THE GREATEST THIEF OF POTENTIAL.", "EXECUTE WITHOUT EXCUSE."]
-    ],
-    grind: [
-        ["WHILE THEY SLEEP, YOU BUILD.", "THE 1% ARE NOT LUCKIER. THEY ARE UNRELENTING.", "FALL IN LOVE WITH THE MONOTONY OF WINNING."],
-        ["NO SHORTCUTS. NO HANDOUTS. NO CEILING.", "BUILD AN EMPIRE THAT SPEAKS FOR ITSELF.", "RELENTLESS EXECUTION BEATS NATURAL TALENT EVERY TIME."]
-    ]
-};
-
+/**
+ * Generate or resolve content across 3 choices:
+ * 1. "json": Explicitly provided quotes in the request (zero API key needed)
+ * 2. "db": Pulled from local JSON quotes database (zero API key needed)
+ * 3. "ai": Generated with Gemini AI using configured/provided API key (falls back to db if no key)
+ */
 export async function generateContent({
+    contentSource = null, // "ai" | "json" | "db"
     topic = "Unrelenting discipline",
     mode = "carousel",
     numPosts = 1,
     slidesPerPost = 3,
-    apiKey = process.env.GEMINI_API_KEY || process.env.VITE_API_KEY || process.env.API_KEY || "",
+    apiKey = null,
     model = "gemini-2.5-flash",
     providedQuotes = null,
+    dbCategory = null,
     providedBackgroundPrompt = null
 }) {
-    // If quotes are explicitly supplied by the caller, format them directly
-    if (providedQuotes && Array.isArray(providedQuotes) && providedQuotes.length > 0) {
+    // 1. Determine Source
+    let resolvedSource = (contentSource || "").toLowerCase();
+    if (!resolvedSource) {
+        if (providedQuotes && Array.isArray(providedQuotes) && providedQuotes.length > 0) {
+            resolvedSource = "json";
+        } else if (dbCategory) {
+            resolvedSource = "db";
+        } else {
+            resolvedSource = "ai";
+        }
+    }
+
+    // CHOICE 1: Explicit JSON Quotes (No API key needed)
+    if (resolvedSource === 'json' && providedQuotes && Array.isArray(providedQuotes) && providedQuotes.length > 0) {
         return {
+            contentSource: 'json',
             posts: [{
                 backgroundPrompt: providedBackgroundPrompt || `${topic}, dark moody cinematic lighting, high contrast minimalist aesthetic`,
                 quotes: providedQuotes
@@ -61,12 +68,33 @@ export async function generateContent({
         };
     }
 
+    // CHOICE 2: Pull from Local JSON Quotes Database (No API key needed)
+    if (resolvedSource === 'db') {
+        const dbQuotes = getQuotesFromDatabase({
+            category: dbCategory || topic,
+            query: topic,
+            count: mode === 'reel' ? 1 : slidesPerPost
+        });
+
+        return {
+            contentSource: 'db',
+            posts: [{
+                backgroundPrompt: providedBackgroundPrompt || `${topic}, obsidian marble, dark cinematic shadows, high contrast`,
+                quotes: dbQuotes
+            }]
+        };
+    }
+
+    // CHOICE 3: AI Generation (Gemini)
+    // Resolve API key in priority: explicit argument -> stored in app config -> environment variable
+    const activeKey = resolveApiKey(apiKey);
+
     const history = getUsedQuotes();
     const antiRepetitionPrompt = history.length > 0
         ? `CRITICAL RULE: DO NOT use any of these past quotes or anything semantically similar:\n${JSON.stringify(history.slice(0, 40))}`
         : "";
 
-    if (apiKey) {
+    if (activeKey) {
         try {
             let promptText = "";
             if (mode === 'reel') {
@@ -113,7 +141,7 @@ Return ONLY a valid JSON object matching this schema exactly:
                 }
             };
 
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`;
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -132,35 +160,32 @@ Return ONLY a valid JSON object matching this schema exactly:
             }
 
             const parsed = JSON.parse(textResponse);
-            return parsed;
+            return {
+                contentSource: 'ai',
+                ...parsed
+            };
         } catch (err) {
-            console.warn(`[TextGenerator] Gemini API generation failed (${err.message}). Falling back to algorithmic engine.`);
+            console.warn(`[TextGenerator] Gemini API generation failed (${err.message}). Falling back to local database.`);
         }
     }
 
-    // Fallback algorithmic generation
+    // Seamless Fallback to local quotes database when API key is missing or calls fail
     const posts = [];
     for (let p = 0; p < numPosts; p++) {
-        let quotes = [];
-        if (mode === 'reel') {
-            quotes = [
-                `THEY WANT THE RESULT WITHOUT THE ANONYMOUS SUFFERING. YOU CANNOT CHEAT THE GRIND. WHEN NOBODY IS WATCHING, THAT IS WHEN THE CHAMPION IS FORGED. LOCK IN, SHUT OUT THE NOISE, AND LET YOUR RESILIENCE SPEAK FOR ITSELF.`
-            ];
-        } else {
-            const categoryKeys = Object.keys(FALLBACK_BANK);
-            const chosenCategory = FALLBACK_BANK[categoryKeys[p % categoryKeys.length]];
-            const baseQuotes = chosenCategory[p % chosenCategory.length];
-            quotes = baseQuotes.slice(0, slidesPerPost);
-            while (quotes.length < slidesPerPost) {
-                quotes.push(`DISCIPLINE OUTLASTS MOTIVATION. STEP ${quotes.length + 1} OF THE ASCENT.`);
-            }
-        }
+        const dbQuotes = getQuotesFromDatabase({
+            category: topic,
+            query: topic,
+            count: mode === 'reel' ? 1 : slidesPerPost
+        });
 
         posts.push({
-            backgroundPrompt: `${topic}, dark cinematic atmosphere, obsidian marble, high contrast dramatic shadows, 8k luxury aesthetic`,
-            quotes
+            backgroundPrompt: providedBackgroundPrompt || `${topic}, dark cinematic atmosphere, obsidian marble, high contrast dramatic shadows, 8k luxury aesthetic`,
+            quotes: dbQuotes
         });
     }
 
-    return { posts };
+    return {
+        contentSource: activeKey ? 'fallback_db' : 'db',
+        posts
+    };
 }

@@ -5,6 +5,9 @@ import fs from 'fs';
 import { executeWorkflow } from '../engine/workflow.js';
 import { renderSlide } from '../engine/renderer.js';
 import { VIBE_PRESETS, PRO_PALETTE, FONT_PROFILES } from '../engine/presets.js';
+import { getAgentHelp } from '../engine/help.js';
+import { setApiKey, clearApiKey, resolveApiKey } from '../engine/config.js';
+import { listCategories } from '../engine/database.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,9 +35,14 @@ app.get('/api/health', (req, res) => {
     res.json({
         status: 'ok',
         service: 'SMPG Agent Workflow Engine',
-        version: '1.0.0',
+        version: '2.0.0',
         timestamp: new Date().toISOString()
     });
+});
+
+// Help & Agent Self-Discovery
+app.get('/api/help', (req, res) => {
+    res.json(getAgentHelp());
 });
 
 // Presets & Available Fonts
@@ -42,8 +50,38 @@ app.get('/api/presets', (req, res) => {
     res.json({
         vibePresets: VIBE_PRESETS,
         colorPalette: PRO_PALETTE,
-        fontProfiles: FONT_PROFILES
+        fontProfiles: FONT_PROFILES,
+        dbCategories: listCategories()
     });
+});
+
+// Database categories
+app.get('/api/db/categories', (req, res) => {
+    res.json({
+        categories: listCategories()
+    });
+});
+
+// App-level API Key Management (Store/Inspect/Clear)
+app.get('/api/config', (req, res) => {
+    const key = resolveApiKey();
+    res.json({
+        hasApiKey: Boolean(key),
+        maskedKey: key ? `${key.slice(0, 4)}...${key.slice(-4)}` : null
+    });
+});
+
+app.post('/api/config', (req, res) => {
+    const { apiKey, clear } = req.body;
+    if (clear) {
+        clearApiKey();
+        return res.json({ success: true, message: 'API key cleared from app.' });
+    }
+    if (apiKey) {
+        setApiKey(apiKey);
+        return res.json({ success: true, message: 'API key stored inside app.' });
+    }
+    res.status(400).json({ success: false, error: 'Please provide apiKey string or clear: true.' });
 });
 
 // Full Workflow Run (Declarative Workflow Language Specification)
@@ -71,12 +109,19 @@ app.post('/api/generate', async (req, res) => {
             format = 'carousel',
             mode,
             slidesCount = 3,
+            contentSource, // 'ai' | 'json' | 'db'
+            dbCategory,
             quotes = null,
             fontProfile = 'BigShoulders',
             watermark = null,
-            bgMode = 'image',
+            bgType, // 'ai' | 'plain' | 'custom'
+            bgMode,
             bgColor = '#09090b',
-            imageUrl = null
+            imageUrl = null,
+            imagePath = null,
+            imageBase64 = null,
+            backgroundPrompt = null,
+            apiKey = null
         } = req.body;
 
         const resolvedFormat = (format || mode || 'carousel').toLowerCase() === 'reel' ? 'reel' : 'carousel';
@@ -85,17 +130,25 @@ app.post('/api/generate', async (req, res) => {
             name: `N8N-Generation-${Date.now()}`,
             format: resolvedFormat,
             input: {
+                contentSource,
+                dbCategory,
                 topic,
                 numPosts: 1,
                 slidesPerPost: resolvedFormat === 'reel' ? 1 : slidesCount,
                 quotes,
-                bgMode,
+                bgType: bgType || bgMode,
                 bgColor,
-                imageUrl
+                backgroundPrompt,
+                imageUrl,
+                imagePath,
+                imageBase64
             },
             theme: {
                 fontProfile,
                 watermark
+            },
+            generator: {
+                apiKey
             },
             output: {
                 directory: OUTPUT_DIR,
@@ -166,4 +219,5 @@ app.post('/api/render', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`[SMPG API] Agent & N8N Workflow API listening at http://localhost:${PORT}`);
     console.log(`[SMPG API] Static asset delivery at http://localhost:${PORT}/output`);
+    console.log(`[SMPG API] Agent Help & Docs available at http://localhost:${PORT}/api/help`);
 });

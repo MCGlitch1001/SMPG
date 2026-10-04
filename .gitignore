@@ -12,6 +12,7 @@ public/
 dist/
 output/
 .smpg_history.json
+.smpg_config.json
 
 # Local Netlify/Cloudflare folders
 .netlify/

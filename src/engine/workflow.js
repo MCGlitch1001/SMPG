@@ -5,6 +5,7 @@ import { getBackgroundImage } from './image-generator.js';
 import { renderSlide } from './renderer.js';
 import { generateCaption } from './caption-generator.js';
 import { VIBE_PRESETS, FONT_PROFILES } from './presets.js';
+import { resolveApiKey } from './config.js';
 
 export async function executeWorkflow(spec = {}, baseUrl = "") {
     const startTime = Date.now();
@@ -17,12 +18,19 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
     const topic = input.topic || VIBE_PRESETS[0];
     const numPosts = Math.max(1, Math.min(10, parseInt(input.numPosts || spec.numPosts || 1, 10)));
     const slidesPerPost = mode === 'reel' ? 1 : Math.max(1, Math.min(10, parseInt(input.slidesPerPost || spec.slidesPerPost || 3, 10)));
+    
+    // Content choices: "ai", "json", "db"
+    const contentSource = input.contentSource || spec.contentSource || null;
+    const dbCategory = input.dbCategory || spec.dbCategory || null;
     const providedQuotes = input.quotes || spec.quotes || null;
     const providedBackgroundPrompt = input.backgroundPrompt || spec.backgroundPrompt || null;
-    const bgMode = input.bgMode || spec.bgMode || "image";
+    
+    // Background choices: "ai", "plain", "custom"
+    const bgType = input.bgType || spec.bgType || input.bgMode || spec.bgMode || null;
     const bgColor = input.bgColor || spec.bgColor || "#09090b";
     const imageUrl = input.imageUrl || spec.imageUrl || null;
     const imagePath = input.imagePath || spec.imagePath || null;
+    const imageBase64 = input.imageBase64 || spec.imageBase64 || null;
 
     const theme = spec.theme || {};
     const fontProfile = theme.fontProfile || spec.fontProfile || "BigShoulders";
@@ -30,7 +38,8 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
     const watermark = theme.watermark || spec.watermark || null;
 
     const generator = spec.generator || {};
-    const apiKey = generator.apiKey || spec.apiKey || process.env.GEMINI_API_KEY || process.env.VITE_API_KEY || process.env.API_KEY || "";
+    // API key resolution: explicit param -> stored app config -> env var -> null
+    const apiKey = resolveApiKey(generator.apiKey || spec.apiKey || null);
     const model = generator.model || spec.model || "gemini-2.5-flash";
 
     const outputSpec = spec.output || {};
@@ -43,8 +52,9 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
         fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    // 2. Generate Content
+    // 2. Resolve Content (AI, JSON, or DB)
     const contentData = await generateContent({
+        contentSource,
         topic,
         mode,
         numPosts,
@@ -52,6 +62,7 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
         apiKey,
         model,
         providedQuotes,
+        dbCategory,
         providedBackgroundPrompt
     });
 
@@ -66,14 +77,15 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
         const quotes = postData.quotes;
         allQuotesRendered.push(...quotes);
 
-        // Background generation
+        // Resolve Background (AI, plain color, or custom image)
         const bgResult = await getBackgroundImage({
+            bgType,
             prompt: postData.backgroundPrompt || topic,
             mode,
-            bgMode,
             bgColor,
             imageUrl,
-            imagePath
+            imagePath,
+            imageBase64
         });
 
         const slides = [];
@@ -128,8 +140,9 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
         finalPosts.push({
             postIndex: postNum,
             mode,
-            backgroundPrompt: postData.backgroundPrompt,
-            backgroundType: bgResult.type,
+            contentSource: contentData.contentSource,
+            backgroundType: bgResult.mode || bgResult.type,
+            backgroundSource: bgResult.source || bgResult.color || 'solid',
             caption,
             slides
         });
@@ -142,6 +155,8 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
         workflowName: name,
         format: mode,
         topic,
+        contentSource: contentData.contentSource,
+        backgroundType: bgType || (imageUrl || imagePath || imageBase64 ? 'custom' : (providedBackgroundPrompt || topic ? 'ai' : 'plain')),
         postsCount: finalPosts.length,
         totalSlides: finalPosts.reduce((acc, p) => acc + p.slides.length, 0),
         outputDirectory: saveImages ? outputDir : null,

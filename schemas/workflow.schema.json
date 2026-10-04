@@ -21,9 +21,24 @@
     "input": {
       "type": "object",
       "properties": {
+        "contentSource": {
+          "type": "string",
+          "enum": ["ai", "json", "db"],
+          "default": "ai",
+          "description": "Source of content/quotes: 'ai' (generate with Gemini), 'json' (explicit quotes in JSON), 'db' (load from local quote database)"
+        },
         "topic": {
           "type": "string",
-          "description": "Core topic, vibe, or niche concept"
+          "description": "Core topic, vibe, or search query"
+        },
+        "dbCategory": {
+          "type": "string",
+          "description": "Category to pull from when contentSource is 'db' (e.g. 'stoicism', 'discipline', 'grind', 'mamba_mentality', 'dark_luxury', 'villain_arc', 'tech_startup')"
+        },
+        "quotes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Explicit quotes array when contentSource is 'json'"
         },
         "numPosts": {
           "type": "integer",
@@ -37,35 +52,34 @@
           "maximum": 10,
           "default": 3
         },
-        "quotes": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Explicit list of quotes. If provided, skips LLM generation"
-        },
-        "backgroundPrompt": {
+        "bgType": {
           "type": "string",
-          "description": "Custom prompt for background image generation"
-        },
-        "bgMode": {
-          "type": "string",
-          "enum": ["image", "color"],
-          "default": "image"
+          "enum": ["ai", "plain", "custom"],
+          "default": "ai",
+          "description": "Background style: 'ai' (Pollinations Flux AI image), 'plain' (solid color), 'custom' (user supplied image)"
         },
         "bgColor": {
           "type": "string",
           "default": "#09090b",
-          "description": "Hex color code for solid background mode"
+          "description": "Hex color code when bgType is 'plain'"
+        },
+        "backgroundPrompt": {
+          "type": "string",
+          "description": "Custom prompt when bgType is 'ai'"
         },
         "imageUrl": {
           "type": "string",
-          "description": "Direct image URL for background"
+          "description": "Direct image URL when bgType is 'custom'"
         },
         "imagePath": {
           "type": "string",
-          "description": "Local filesystem path to background image"
+          "description": "Local filesystem image path when bgType is 'custom'"
+        },
+        "imageBase64": {
+          "type": "string",
+          "description": "Base64 encoded image string when bgType is 'custom'"
         }
-      },
-      "required": ["topic"]
+      }
     },
     "theme": {
       "type": "object",
@@ -95,7 +109,7 @@
         },
         "apiKey": {
           "type": "string",
-          "description": "Gemini API Key (optional if set in environment)"
+          "description": "Gemini API Key (optional: can be supplied per-request, stored in app, or omitted if using json/db mode)"
         }
       }
     },
@@ -120,6 +134,5 @@
         }
       }
     }
-  },
-  "required": ["input"]
+  }
 }

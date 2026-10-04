@@ -2,6 +2,17 @@
   {
     "type": "function",
     "function": {
+      "name": "smpg_help",
+      "description": "Agent discovery tool: explains how to use SMPG, available content choices (AI/JSON/DB), background choices (AI/plain/custom), and API key configuration.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
       "name": "smpg_generate_post",
       "description": "Generate an aesthetic social media carousel or reel post with typography and dark cinematic backgrounds without needing a browser.",
       "parameters": {
@@ -24,6 +35,40 @@
             "default": 3,
             "description": "Number of slides for carousels (default 3)"
           },
+          "contentSource": {
+            "type": "string",
+            "enum": ["ai", "json", "db"],
+            "default": "ai",
+            "description": "Source of quotes: 'ai' (Gemini), 'json' (direct quotes array), 'db' (local curated database)"
+          },
+          "dbCategory": {
+            "type": "string",
+            "description": "Category when contentSource is 'db' (e.g. 'stoicism', 'discipline', 'grind', 'dark_luxury', 'tech_startup')"
+          },
+          "quotes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Optional explicit list of quotes when contentSource is 'json'. Requires ZERO API key."
+          },
+          "bgType": {
+            "type": "string",
+            "enum": ["ai", "plain", "custom"],
+            "default": "ai",
+            "description": "Visual style: 'ai' uses Flux generator, 'plain' uses solid dark color, 'custom' uses your own image"
+          },
+          "bgColor": {
+            "type": "string",
+            "default": "#09090b",
+            "description": "Hex color code when bgType is 'plain'"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Direct image URL when bgType is 'custom'"
+          },
+          "imagePath": {
+            "type": "string",
+            "description": "Local file path when bgType is 'custom'"
+          },
           "fontProfile": {
             "type": "string",
             "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
@@ -34,16 +79,9 @@
             "type": "string",
             "description": "Brand handle or tag e.g. @discipline.archive"
           },
-          "quotes": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "Optional explicit list of quotes. If supplied, LLM quote generation is bypassed"
-          },
-          "bgMode": {
+          "apiKey": {
             "type": "string",
-            "enum": ["image", "color"],
-            "default": "image",
-            "description": "Visual style: 'image' uses AI Flux generator, 'color' uses solid dark swatch"
+            "description": "Optional Gemini API key override"
           }
         },
         "required": ["topic"]
@@ -70,35 +108,22 @@
   {
     "type": "function",
     "function": {
-      "name": "smpg_render_slide",
-      "description": "Low-level slide typesetting tool to render an individual slide with custom quote and background.",
+      "name": "smpg_manage_config",
+      "description": "Store or check Gemini API key inside the app configuration so you don't need to supply it every time.",
       "parameters": {
         "type": "object",
         "properties": {
-          "quote": {
+          "action": {
             "type": "string",
-            "description": "The quote to typeset"
+            "enum": ["get", "set", "clear"],
+            "description": "Action to perform"
           },
-          "format": {
+          "apiKey": {
             "type": "string",
-            "enum": ["carousel", "reel"],
-            "default": "carousel"
-          },
-          "bgColor": {
-            "type": "string",
-            "default": "#09090b"
-          },
-          "fontProfile": {
-            "type": "string",
-            "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
-            "default": "BigShoulders"
-          },
-          "watermark": {
-            "type": "string",
-            "description": "Optional brand watermark"
+            "description": "API key string to save (required when action is 'set')"
           }
         },
-        "required": ["quote"]
+        "required": ["action"]
       }
     }
   }

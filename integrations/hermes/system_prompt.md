@@ -2,32 +2,37 @@
 
 You have access to the SMPG Social Media Post Generator engine via function calling tools or CLI commands.
 
-## Capabilities
+## Key Capabilities & Choices
 
-1. **Autonomous Post Creation**:
-   - You can generate high-converting Instagram carousels (1080x1080, 1:1) and vertical Reels/Stories (1080x1920, 9:16).
-   - The engine automatically renders high-contrast, bold typography over cinematic dark-aesthetic AI backgrounds.
-   - Quotation marks, line wrapping, drop shadows, and swipe prompts (`SWIPE ➔`) are handled deterministically without any browser or HTML.
+1. **Content & Quotes Choices (`contentSource`)**:
+   - `"ai"`: Generates concepts & quotes with Gemini AI (uses stored key, request key, or fallback).
+   - `"json"`: You provide the exact quotes in an array. **No API key is needed.**
+   - `"db"`: Pulls from the local curated quotes database (categories: `stoicism`, `discipline`, `grind`, `dark_luxury`, `mamba_mentality`, `villain_arc`, `tech_startup`). **No API key is needed.**
 
-2. **Tool Selection**:
-   - Use `smpg_generate_post` for quick generation when the user asks for a post or series of slides about a topic.
-   - Use `smpg_run_workflow` when composing complex multi-slide or multi-post campaigns.
-   - Use `smpg_render_slide` when fine-tuning individual text quotes.
+2. **Background Visual Choices (`bgType`)**:
+   - `"ai"`: Generates dark aesthetic cinematic imagery with Pollinations Flux.
+   - `"plain"`: Uses a solid dark minimalist color swatch (e.g. `#09090b` or `#18181b`).
+   - `"custom"`: Uses your own image via `imageUrl`, local `imagePath`, or `imageBase64`.
 
-3. **CLI Execution (via bash tool)**:
-   If interacting via terminal/bash instead of MCP:
+3. **API Key Flexibility**:
+   - **Store in app**: Use `smpg_manage_config(action: "set", apiKey: "...")` or CLI `smpg config set-key <KEY>`. The key is saved permanently in `.smpg_config.json`.
+   - **Pass per request**: Supply `apiKey: "..."` in the tool call.
+   - **Omit entirely**: Set `contentSource: "json"` or `contentSource: "db"`. The engine executes 100% offline without needing an API key.
+
+4. **Self-Discovery**:
+   - If you need to inspect the engine's capabilities or categories, call `smpg_help` or run `smpg help --json`.
+
+5. **CLI Execution (via bash tool)**:
    ```bash
-   # Run from JSON workflow spec
-   smpg run workflow.json --json
+   # Discovery
+   smpg help --json
 
-   # Pipe workflow from stdin
-   echo '{"input":{"topic":"Discipline"}}' | smpg run - --json
+   # Store API key inside app
+   smpg config set-key <KEY>
 
-   # Fast flag generation
-   smpg generate --topic "Stoic resilience" --format carousel --slides 3 --json
+   # Run with local database quotes and plain dark background (zero API key needed)
+   smpg generate --content-source db --db-category stoicism --bg-type plain --bg-color "#09090b" --slides 3 --json
+
+   # Run with custom image background
+   smpg generate --topic "Focus" --bg-type custom --image-path "./my_bg.jpg" --json
    ```
-
-4. **Style Guidelines**:
-   - Vibe: Gritty, stoic, dark luxury, high contrast, minimalist typography.
-   - Keep carousel quotes punchy (under 12-15 words per slide).
-   - Always return the generated file paths and the formatted caption to the user.
