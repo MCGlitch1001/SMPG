@@ -3,15 +3,44 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { generateContent, saveUsedQuotes } from './text-generator.js';
 import { getBackgroundImage } from './image-generator.js';
-import { renderSlide } from './renderer.js';
 import { generateCaption } from './caption-generator.js';
 import { VIBE_PRESETS, FONT_PROFILES } from './presets.js';
 import { resolveApiKey } from './config.js';
 
-const DEFAULT_OUTPUT_DIR = fileURLToPath(new URL('../../output', import.meta.url));
+async function getDefaultRenderer() {
+    const mod = await import(String('./renderer.js'));
+    return mod.renderSlide;
+}
 
-export async function executeWorkflow(spec = {}, baseUrl = "") {
+let DEFAULT_OUTPUT_DIR = './output';
+try {
+    DEFAULT_OUTPUT_DIR = fileURLToPath(new URL('../../output', import.meta.url));
+} catch {}
+
+export async function executeWorkflow(spec = {}, baseUrlOrOptions = "", customRendererArg = null) {
     const startTime = Date.now();
+
+    let baseUrl = "";
+    let customRenderer = null;
+    let fontLoader = null;
+    let env = null;
+
+    if (typeof baseUrlOrOptions === 'object' && baseUrlOrOptions !== null) {
+        baseUrl = baseUrlOrOptions.baseUrl || "";
+        customRenderer = baseUrlOrOptions.customRenderer || null;
+        fontLoader = baseUrlOrOptions.fontLoader || null;
+        env = baseUrlOrOptions.env || null;
+    } else {
+        baseUrl = baseUrlOrOptions || "";
+        customRenderer = customRendererArg || null;
+    }
+
+    if (!customRenderer && spec.customRenderer) {
+        customRenderer = spec.customRenderer;
+    }
+    if (!fontLoader && spec.fontLoader) {
+        fontLoader = spec.fontLoader;
+    }
 
     // 1. Normalize and apply defaults
     const name = spec.name || "SMPG-Workflow";
@@ -46,15 +75,23 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
     const model = generator.model || spec.model || "gemini-2.5-flash";
 
     const outputSpec = spec.output || {};
-    const outputDir = outputSpec.directory
-        ? (path.isAbsolute(outputSpec.directory) ? outputSpec.directory : path.resolve(outputSpec.directory))
-        : (process.env.OUTPUT_DIR || DEFAULT_OUTPUT_DIR);
+    let outputDir = DEFAULT_OUTPUT_DIR;
+    if (outputSpec.directory) {
+        outputDir = path.isAbsolute(outputSpec.directory) ? outputSpec.directory : path.resolve(outputSpec.directory);
+    } else if (process.env.OUTPUT_DIR) {
+        outputDir = process.env.OUTPUT_DIR;
+    }
+
     const saveImages = outputSpec.saveImages !== false;
     const returnBase64 = Boolean(outputSpec.returnBase64);
     const generateCaptionsFlag = outputSpec.generateCaptions !== false;
 
-    if (saveImages && !fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
+    if (saveImages) {
+        try {
+            if (typeof fs !== 'undefined' && fs.existsSync && !fs.existsSync(outputDir)) {
+                fs.mkdirSync(outputDir, { recursive: true });
+            }
+        } catch {}
     }
 
     // 2. Resolve Content (AI, JSON, or DB)
@@ -99,7 +136,8 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
             const slideNum = sIdx + 1;
             const quote = quotes[sIdx];
 
-            const slideBuffer = await renderSlide({
+            const renderFn = customRenderer || (await getDefaultRenderer());
+            const renderResult = await renderFn({
                 quote,
                 bgResult,
                 mode,
@@ -108,26 +146,42 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
                 fontProfile,
                 customFontSize,
                 watermark,
-                showSwipeArrow: true
+                showSwipeArrow: true,
+                fontLoader
             });
+
+            let slideBuffer = null;
+            let slideBase64 = null;
+
+            if (renderResult && typeof renderResult === 'object' && renderResult.base64) {
+                slideBase64 = renderResult.base64;
+                slideBuffer = renderResult.buffer || null;
+            } else if (Buffer.isBuffer(renderResult) || renderResult instanceof Uint8Array) {
+                slideBuffer = renderResult;
+                slideBase64 = `data:image/png;base64,${Buffer.from(renderResult).toString('base64')}`;
+            }
 
             const fileName = `post_${postNum}_slide_${slideNum}.png`;
             const filePath = path.join(outputDir, fileName);
 
-            if (saveImages) {
-                fs.writeFileSync(filePath, slideBuffer);
+            if (saveImages && slideBuffer) {
+                try {
+                    if (typeof fs !== 'undefined' && fs.writeFileSync) {
+                        fs.writeFileSync(filePath, slideBuffer);
+                    }
+                } catch {}
             }
 
             const slideItem = {
                 slideIndex: slideNum,
                 quote,
                 fileName,
-                filePath: saveImages ? filePath : null,
+                filePath: (saveImages && slideBuffer) ? filePath : null,
                 url: baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`
             };
 
-            if (returnBase64) {
-                slideItem.base64 = `data:image/png;base64,${slideBuffer.toString('base64')}`;
+            if (returnBase64 || slideBase64) {
+                slideItem.base64 = slideBase64;
             }
 
             slides.push(slideItem);
@@ -146,33 +200,30 @@ export async function executeWorkflow(spec = {}, baseUrl = "") {
             postIndex: postNum,
             mode,
             contentSource: contentData.contentSource,
-            backgroundType: bgResult.mode || bgResult.type,
-            backgroundSource: bgResult.source || bgResult.color || 'solid',
+            backgroundType: bgResult.mode,
+            backgroundSource: bgResult.source || bgResult.color,
             caption,
             slides
         });
     }
 
+    // 4. Save Used Quotes to Deduplication History
     saveUsedQuotes(allQuotesRendered);
 
-    const result = {
+    const totalDuration = Date.now() - startTime;
+
+    return {
         success: true,
         workflowName: name,
         format: mode,
         topic,
         contentSource: contentData.contentSource,
-        backgroundType: bgType || (imageUrl || imagePath || imageBase64 ? 'custom' : (providedBackgroundPrompt || topic ? 'ai' : 'plain')),
+        backgroundType: bgType || "auto",
         postsCount: finalPosts.length,
         totalSlides: finalPosts.reduce((acc, p) => acc + p.slides.length, 0),
-        outputDirectory: saveImages ? outputDir : null,
+        outputDirectory: outputDir,
         posts: finalPosts,
-        durationMs: Date.now() - startTime,
+        durationMs: totalDuration,
         createdAt: new Date().toISOString()
     };
-
-    if (saveImages) {
-        fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify(result, null, 2));
-    }
-
-    return result;
 }

@@ -5,7 +5,12 @@ import { resolveApiKey } from './config.js';
 import { getQuotesFromDatabase } from './database.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const HISTORY_FILE = fileURLToPath(new URL('../../.smpg_history.json', import.meta.url));
+let HISTORY_FILE = null;
+try {
+    if (import.meta.url) {
+        HISTORY_FILE = fileURLToPath(new URL('../../.smpg_history.json', import.meta.url));
+    }
+} catch {}
 
 // In-memory LRU cache of max 300 items for quote deduplication in production
 class InMemoryLRUCache {
@@ -41,11 +46,11 @@ const memoryHistory = new InMemoryLRUCache(300);
 
 // Deduplication memory helper
 export function getUsedQuotes() {
-    if (isProduction) {
+    if (isProduction || !HISTORY_FILE) {
         return memoryHistory.getAll();
     }
     try {
-        if (fs.existsSync(HISTORY_FILE)) {
+        if (typeof fs !== 'undefined' && fs.existsSync && fs.existsSync(HISTORY_FILE)) {
             return JSON.parse(fs.readFileSync(HISTORY_FILE, 'utf-8'));
         }
     } catch {
@@ -56,7 +61,7 @@ export function getUsedQuotes() {
 
 export function saveUsedQuotes(newQuotes) {
     if (!Array.isArray(newQuotes)) return;
-    if (isProduction) {
+    if (isProduction || !HISTORY_FILE || typeof fs === 'undefined' || !fs.writeFileSync) {
         memoryHistory.addAll(newQuotes);
         return;
     }

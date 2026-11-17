@@ -1,32 +1,37 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import defaultQuotesDb from '../../data/quotes_db.json' with { type: 'json' };
 
 const isProduction = process.env.NODE_ENV === 'production';
-const DB_FILE = fileURLToPath(new URL('../../data/quotes_db.json', import.meta.url));
+let DB_FILE = null;
+try {
+    DB_FILE = fileURLToPath(new URL('../../data/quotes_db.json', import.meta.url));
+} catch {}
 
 /**
  * Load the complete JSON quote database
  */
 export function loadDatabase() {
     try {
-        if (fs.existsSync(DB_FILE)) {
+        if (DB_FILE && typeof fs !== 'undefined' && fs.existsSync && fs.existsSync(DB_FILE)) {
             return JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'));
         }
     } catch (e) {
-        console.warn('Warning: Could not read quotes database:', e.message);
+        // Fallback to static imported json
     }
-    return {};
+    return defaultQuotesDb || {};
 }
 
 /**
- * Save database to file (disabled in production container environments)
+ * Save database to file (disabled in production container / serverless environments)
  */
 export function saveDatabase(data) {
-    if (isProduction) {
+    if (isProduction || typeof fs === 'undefined' || !fs.writeFileSync) {
         return true;
     }
     try {
+        if (!DB_FILE) return false;
         const dir = path.dirname(DB_FILE);
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));

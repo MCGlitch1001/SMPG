@@ -8,21 +8,30 @@ import {
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import defaultWorkflowSchema from '../../schemas/workflow.schema.json' with { type: 'json' };
 import { executeWorkflow } from '../engine/workflow.js';
-import { renderSlide } from '../engine/renderer.js';
 import { VIBE_PRESETS, PRO_PALETTE, FONT_PROFILES } from '../engine/presets.js';
 import { getAgentHelp } from '../engine/help.js';
 import { setApiKey, clearApiKey, resolveApiKey } from '../engine/config.js';
 import { listCategories } from '../engine/database.js';
 
-const SCHEMA_PATH = fileURLToPath(new URL('../../schemas/workflow.schema.json', import.meta.url));
-const DEFAULT_OUTPUT_DIR = process.env.OUTPUT_DIR || fileURLToPath(new URL('../../output', import.meta.url));
+async function getDefaultRenderer() {
+    const mod = await import(String('../engine/renderer.js'));
+    return mod.renderSlide;
+}
+
+let SCHEMA_PATH = null;
+let DEFAULT_OUTPUT_DIR = './output';
+try {
+    SCHEMA_PATH = fileURLToPath(new URL('../../schemas/workflow.schema.json', import.meta.url));
+    DEFAULT_OUTPUT_DIR = process.env.OUTPUT_DIR || fileURLToPath(new URL('../../output', import.meta.url));
+} catch {}
 
 /**
- * Factory function to create an MCP Server instance with optional session-scoped API key.
- * Used for both local stdio and multi-tenant remote SSE transports.
+ * Factory function to create an MCP Server instance with optional session-scoped API key and renderer.
+ * Used for local stdio, Node Express SSE, and Cloudflare Pages Functions WebStandard HTTP.
  */
-export function createSmpgMcpServer(defaultApiKey = null) {
+export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null) {
     const server = new Server(
         {
             name: 'smpg-agent-engine',
@@ -257,7 +266,7 @@ export function createSmpgMcpServer(defaultApiKey = null) {
                 if (!workflow.generator.apiKey && defaultApiKey) {
                     workflow.generator.apiKey = defaultApiKey;
                 }
-                const result = await executeWorkflow(workflow);
+                const result = await executeWorkflow(workflow, { customRenderer });
                 return {
                     content: [
                         {
@@ -294,11 +303,12 @@ export function createSmpgMcpServer(defaultApiKey = null) {
                     output: {
                         directory: DEFAULT_OUTPUT_DIR,
                         saveImages: true,
-                        generateCaptions: true
+                        generateCaptions: true,
+                        returnBase64: true
                     }
                 };
 
-                const result = await executeWorkflow(workflowSpec);
+                const result = await executeWorkflow(workflowSpec, { customRenderer });
                 return {
                     content: [
                         {
@@ -310,11 +320,8 @@ export function createSmpgMcpServer(defaultApiKey = null) {
             }
 
             if (name === 'smpg_render_slide') {
-                const outputPath = args.outputPath
-                    ? (path.isAbsolute(args.outputPath) ? args.outputPath : path.resolve(args.outputPath))
-                    : path.join(DEFAULT_OUTPUT_DIR, `custom_slide_${Date.now()}.png`);
-
-                const buffer = await renderSlide({
+                const renderFn = customRenderer || (await getDefaultRenderer());
+                const renderResult = await renderFn({
                     quote: args.quote,
                     bgResult: { type: 'color', color: args.bgColor || '#09090b' },
                     mode: args.format || 'carousel',
@@ -324,9 +331,21 @@ export function createSmpgMcpServer(defaultApiKey = null) {
                     watermark: args.watermark || null
                 });
 
-                const dir = path.dirname(outputPath);
-                if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-                fs.writeFileSync(outputPath, buffer);
+                let buffer = renderResult?.buffer || renderResult;
+                let base64 = renderResult?.base64;
+                if (!base64 && (Buffer.isBuffer(buffer) || buffer instanceof Uint8Array)) {
+                    base64 = `data:image/png;base64,${Buffer.from(buffer).toString('base64')}`;
+                }
+
+                let outputPath = null;
+                if (args.outputPath) {
+                    outputPath = path.isAbsolute(args.outputPath) ? args.outputPath : path.resolve(args.outputPath);
+                    try {
+                        const dir = path.dirname(outputPath);
+                        if (typeof fs !== 'undefined' && fs.existsSync && !fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+                        if (typeof fs !== 'undefined' && fs.writeFileSync) fs.writeFileSync(outputPath, buffer);
+                    } catch {}
+                }
 
                 return {
                     content: [
@@ -335,7 +354,8 @@ export function createSmpgMcpServer(defaultApiKey = null) {
                             text: JSON.stringify({
                                 success: true,
                                 outputPath,
-                                bytes: buffer.length
+                                bytes: buffer?.length || 0,
+                                base64
                             }, null, 2)
                         }
                     ]
@@ -359,9 +379,14 @@ export function createSmpgMcpServer(defaultApiKey = null) {
             }
 
             if (name === 'smpg_get_schema') {
-                const schemaContent = fs.existsSync(SCHEMA_PATH)
-                    ? JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf-8'))
-                    : { error: 'Schema file not found' };
+                let schemaContent = defaultWorkflowSchema;
+                if (SCHEMA_PATH) {
+                    try {
+                        if (typeof fs !== 'undefined' && fs.existsSync && fs.existsSync(SCHEMA_PATH)) {
+                            schemaContent = JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf-8'));
+                        }
+                    } catch {}
+                }
                 return {
                     content: [
                         {
@@ -399,11 +424,14 @@ export async function startStdioServer() {
     console.error("SMPG MCP Server started over stdio");
 }
 
-const isDirectExecution = process.argv[1] && (
-    fileURLToPath(import.meta.url) === path.resolve(process.argv[1]) ||
-    process.argv[1].endsWith('smpg.js') ||
-    process.argv[1].endsWith('smpg')
-);
+let isDirectExecution = false;
+try {
+    isDirectExecution = process.argv[1] && (
+        fileURLToPath(import.meta.url) === path.resolve(process.argv[1]) ||
+        process.argv[1].endsWith('smpg.js') ||
+        process.argv[1].endsWith('smpg')
+    );
+} catch {}
 
 if (isDirectExecution) {
     startStdioServer().catch((err) => {

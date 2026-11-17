@@ -64,12 +64,16 @@ export async function getBackgroundImage({
 
         // Local file path
         if (imagePath) {
-            const resolvedPath = path.resolve(process.cwd(), imagePath);
-            if (fs.existsSync(resolvedPath)) {
-                const buffer = fs.readFileSync(resolvedPath);
-                return { type: 'image', buffer, source: resolvedPath, mode: 'custom' };
-            }
-            console.warn(`[ImageGenerator] Local file not found: ${resolvedPath}. Falling back to plain color.`);
+            try {
+                if (typeof fs !== 'undefined' && fs.existsSync) {
+                    const resolvedPath = path.resolve(imagePath);
+                    if (fs.existsSync(resolvedPath)) {
+                        const buffer = fs.readFileSync(resolvedPath);
+                        return { type: 'image', buffer, source: resolvedPath, mode: 'custom' };
+                    }
+                }
+            } catch {}
+            console.warn(`[ImageGenerator] Local file not found: ${imagePath}. Falling back to plain color.`);
             return { type: 'color', color: bgColor || '#09090b', mode: 'plain' };
         }
 

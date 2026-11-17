@@ -17,6 +17,8 @@
     "test": "node bin/smpg.js help --json"
   },
   "dependencies": {
+    "@cf-wasm/resvg": "^0.4.0",
+    "@cf-wasm/satori": "^0.4.2",
     "@modelcontextprotocol/sdk": "^1.32.0",
     "@napi-rs/canvas": "^1.0.10",
     "cors": "^2.8.6",
@@ -24,13 +26,15 @@
     "express": "^5.2.1",
     "lucide-react": "^0.446.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "satori": "^0.63.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "wrangler": "^4.164.0"
   }
 }

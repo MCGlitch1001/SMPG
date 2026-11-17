@@ -3,7 +3,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const CONFIG_FILE = fileURLToPath(new URL('../../.smpg_config.json', import.meta.url));
+let CONFIG_FILE = null;
+try {
+    if (import.meta.url) {
+        CONFIG_FILE = fileURLToPath(new URL('../../.smpg_config.json', import.meta.url));
+    }
+} catch {}
 
 let inMemoryConfig = {};
 
@@ -11,11 +16,11 @@ let inMemoryConfig = {};
  * Load persisted config from local file (or in-memory in production)
  */
 export function loadConfig() {
-    if (isProduction) {
+    if (isProduction || !CONFIG_FILE) {
         return { ...inMemoryConfig };
     }
     try {
-        if (fs.existsSync(CONFIG_FILE)) {
+        if (typeof fs !== 'undefined' && fs.existsSync && fs.existsSync(CONFIG_FILE)) {
             return JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
         }
     } catch {
@@ -28,7 +33,7 @@ export function loadConfig() {
  * Save config object to local file (or in-memory in production)
  */
 export function saveConfig(updates = {}) {
-    if (isProduction) {
+    if (isProduction || !CONFIG_FILE || typeof fs === 'undefined' || !fs.writeFileSync) {
         inMemoryConfig = { ...inMemoryConfig, ...updates };
         return inMemoryConfig;
     }
