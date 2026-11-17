@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import defaultQuotesDb from '../../data/quotes_db.json' with { type: 'json' };
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import defaultQuotesDb from './quotes-db-data.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
 let DB_FILE = null;

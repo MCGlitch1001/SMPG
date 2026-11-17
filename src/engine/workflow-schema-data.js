@@ -1,0 +1,138 @@
+export default {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SMPGWorkflow",
+  "description": "Declarative Workflow Language Specification for Social Media Post Generation",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "default": "1.0"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the workflow run"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["carousel", "reel"],
+      "default": "carousel",
+      "description": "Post format: 1:1 square carousel or 9:16 vertical reel"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "contentSource": {
+          "type": "string",
+          "enum": ["ai", "json", "db"],
+          "default": "ai",
+          "description": "Source of content/quotes: 'ai' (generate with Gemini), 'json' (explicit quotes in JSON), 'db' (load from local quote database)"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Core topic, vibe, or search query"
+        },
+        "dbCategory": {
+          "type": "string",
+          "description": "Category to pull from when contentSource is 'db' (e.g. 'stoicism', 'discipline', 'grind', 'mamba_mentality', 'dark_luxury', 'villain_arc', 'tech_startup')"
+        },
+        "quotes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Explicit quotes array when contentSource is 'json'"
+        },
+        "numPosts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 1
+        },
+        "slidesPerPost": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 3
+        },
+        "bgType": {
+          "type": "string",
+          "enum": ["ai", "plain", "custom"],
+          "default": "ai",
+          "description": "Background style: 'ai' (Pollinations Flux AI image), 'plain' (solid color), 'custom' (user supplied image)"
+        },
+        "bgColor": {
+          "type": "string",
+          "default": "#09090b",
+          "description": "Hex color code when bgType is 'plain'"
+        },
+        "backgroundPrompt": {
+          "type": "string",
+          "description": "Custom prompt when bgType is 'ai'"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Direct image URL when bgType is 'custom'"
+        },
+        "imagePath": {
+          "type": "string",
+          "description": "Local filesystem image path when bgType is 'custom'"
+        },
+        "imageBase64": {
+          "type": "string",
+          "description": "Base64 encoded image string when bgType is 'custom'"
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "fontProfile": {
+          "type": "string",
+          "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
+          "default": "BigShoulders"
+        },
+        "fontSize": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 140
+        },
+        "watermark": {
+          "type": "string",
+          "description": "Handle or brand tag to display on slides e.g. @discipline_archive"
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string",
+          "default": "gemini-2.5-flash"
+        },
+        "apiKey": {
+          "type": "string",
+          "description": "Gemini API Key (optional: can be supplied per-request, stored in app, or omitted if using json/db mode)"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "directory": {
+          "type": "string",
+          "default": "./output"
+        },
+        "saveImages": {
+          "type": "boolean",
+          "default": true
+        },
+        "returnBase64": {
+          "type": "boolean",
+          "default": false
+        },
+        "generateCaptions": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  }
+};

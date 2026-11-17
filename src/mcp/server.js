@@ -5,10 +5,10 @@ import {
     CallToolRequestSchema,
     ListToolsRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import defaultWorkflowSchema from '../../schemas/workflow.schema.json' with { type: 'json' };
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import defaultWorkflowSchema from '../engine/workflow-schema-data.js';
 import { executeWorkflow } from '../engine/workflow.js';
 import { VIBE_PRESETS, PRO_PALETTE, FONT_PROFILES } from '../engine/presets.js';
 import { getAgentHelp } from '../engine/help.js';

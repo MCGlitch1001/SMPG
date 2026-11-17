@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { executeWorkflow } from '../engine/workflow.js';
 import { renderSlide } from '../engine/renderer.js';
