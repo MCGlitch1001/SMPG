@@ -1,14 +1,27 @@
 {
   "name": "smpg",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
+  "description": "Unified Headless Social Media Post Generator & Human Web UI with Dual MCP & REST Engine",
+  "bin": {
+    "smpg": "./bin/smpg.js"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev.js",
     "build": "vite build",
-    "preview": "vite preview"
+    "start": "node src/api/server.js",
+    "serve": "node src/api/server.js",
+    "mcp": "node src/mcp/server.js",
+    "cli": "node bin/smpg.js",
+    "test": "node bin/smpg.js help --json"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "@napi-rs/canvas": "^1.0.10",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
     "lucide-react": "^0.446.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

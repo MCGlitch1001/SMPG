@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "version": "1.0",
+  "name": "Database Quotes with Plain Minimalist Background",
+  "format": "carousel",
+  "input": {
+    "contentSource": "db",
+    "dbCategory": "discipline",
+    "slidesPerPost": 3,
+    "bgType": "plain",
+    "bgColor": "#09090b"
+  },
+  "theme": {
+    "fontProfile": "BigShoulders",
+    "watermark": "@discipline.vault"
+  },
+  "output": {
+    "directory": "./output/db_plain_carousel",
+    "saveImages": true,
+    "generateCaptions": true
+  }
+}

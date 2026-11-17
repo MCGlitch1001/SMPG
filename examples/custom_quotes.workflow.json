@@ -1,0 +1,25 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "version": "1.0",
+  "name": "Manual Quotes Workflow",
+  "format": "carousel",
+  "input": {
+    "topic": "Daily Stoic Principles",
+    "quotes": [
+      "YOU HAVE POWER OVER YOUR MIND - NOT OUTSIDE EVENTS.",
+      "THE HAPPINESS OF YOUR LIFE DEPENDS UPON THE QUALITY OF YOUR THOUGHTS.",
+      "WASTE NO MORE TIME ARGUING WHAT A GOOD MAN SHOULD BE. BE ONE."
+    ],
+    "bgMode": "color",
+    "bgColor": "#09090b"
+  },
+  "theme": {
+    "fontProfile": "Crimson",
+    "watermark": "@marcus.aurelius"
+  },
+  "output": {
+    "directory": "./output/manual_quotes",
+    "saveImages": true,
+    "generateCaptions": true
+  }
+}

@@ -1,0 +1,12 @@
+node_modules
+.git
+.gitignore
+output
+.env
+.env.*
+.smpg_config.json
+.smpg_history.json
+old
+dist
+graphify-out
+*.log

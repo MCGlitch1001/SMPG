@@ -66,7 +66,8 @@ Agents must dynamically query capabilities rather than assuming hardcoded states
   ```bash
   smpg help --json
   ```
-- **MCP Tool**: Call `smpg_help` to inspect schemas, categories, and presets.
+- **Local MCP Tool (stdio)**: Run `smpg mcp` or `node src/mcp/server.js` and call `smpg_help` to inspect schemas, categories, and presets.
+- **Remote MCP Server (SSE)**: Connect remote MCP clients to `GET http://localhost:3000/mcp/sse` (accepts `Authorization: Bearer <KEY>` or `?apiKey=<KEY>`), posting messages to `/mcp/messages`.
 - **REST API**: `GET http://localhost:3000/api/help`
 
 ### CLI Execution Quick Reference

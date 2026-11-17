@@ -1,19 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
   build: {
-    outDir: 'public',
+    outDir: 'dist',
     emptyOutDir: true,
   },
-  envPrefix: ['VITE_', 'apiKey'],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3000',
+      '/mcp': 'http://localhost:3000',
+      '/output': 'http://localhost:3000',
+    },
+  },
 });

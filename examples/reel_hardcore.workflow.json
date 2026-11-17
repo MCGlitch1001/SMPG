@@ -1,0 +1,21 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "version": "1.0",
+  "name": "Hardcore Millionaire Reel",
+  "format": "reel",
+  "input": {
+    "topic": "Unapologetic relentless execution and building an empire",
+    "numPosts": 1,
+    "bgMode": "image",
+    "backgroundPrompt": "high rise penthouse glass overlooking rain drenched dark city skyline, moody cinematic shadows, 8k luxury"
+  },
+  "theme": {
+    "fontProfile": "Outfit",
+    "watermark": "@empire.mentality"
+  },
+  "output": {
+    "directory": "./output/reel_hardcore",
+    "saveImages": true,
+    "generateCaptions": true
+  }
+}
