@@ -9,8 +9,8 @@ import { VIBE_PRESETS, PRO_PALETTE, FONT_PROFILES } from '../src/engine/presets.
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-smpg-token, x-gemini-api-key, Accept, MCP-Protocol-Version',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': '*',
 };
 
 function jsonResponse(data, status = 200) {
@@ -30,16 +30,29 @@ function validateAuth(request, env) {
     }
 
     const url = new URL(request.url);
+
+    // 1. Path-based token: /mcp/<TOKEN>
+    if (url.pathname.startsWith('/mcp/')) {
+        const pathSegments = url.pathname.slice(5).split('/').filter(Boolean);
+        const pathToken = pathSegments[0];
+        if (pathToken && pathToken.trim() === expectedToken.trim()) {
+            return true;
+        }
+    }
+
+    // 2. Query parameter: ?token=<TOKEN>
     const queryToken = url.searchParams.get('token');
     if (queryToken && queryToken.trim() === expectedToken.trim()) {
         return true;
     }
 
+    // 3. Custom header: x-smpg-token: <TOKEN>
     const customHeader = request.headers.get('x-smpg-token');
     if (customHeader && customHeader.trim() === expectedToken.trim()) {
         return true;
     }
 
+    // 4. Authorization: Bearer <TOKEN>
     const authHeader = request.headers.get('authorization');
     if (authHeader) {
         const match = authHeader.match(/^Bearer\s+(.+)$/i);
@@ -59,11 +72,11 @@ function extractGeminiApiKey(request, env) {
     const fromHeader = request.headers.get('x-gemini-api-key');
     if (fromHeader && fromHeader.trim()) return fromHeader.trim();
 
-    if (!env.SMPG_AUTH_TOKEN) {
-        const authHeader = request.headers.get('authorization');
-        if (authHeader) {
-            const match = authHeader.match(/^Bearer\s+(.+)$/i);
-            if (match && match[1]?.trim()) return match[1].trim();
+    const authHeader = request.headers.get('authorization');
+    if (authHeader) {
+        const match = authHeader.match(/^Bearer\s+(.+)$/i);
+        if (match && match[1]?.trim() && match[1].trim() !== env.SMPG_AUTH_TOKEN?.trim()) {
+            return match[1].trim();
         }
     }
 
@@ -129,7 +142,7 @@ export async function onRequest(context) {
     if (!validateAuth(request, env)) {
         return jsonResponse({
             error: 'Unauthorized',
-            message: 'Invalid or missing SMPG authentication token. Supply token via Authorization: Bearer <TOKEN>, x-smpg-token header, or ?token=<TOKEN>'
+            message: 'Invalid or missing SMPG authentication token. Supply token via /mcp/<TOKEN>, Authorization: Bearer <TOKEN>, x-smpg-token header, or ?token=<TOKEN>'
         }, 401);
     }
 
@@ -143,9 +156,24 @@ export async function onRequest(context) {
     const geminiKey = extractGeminiApiKey(request, env);
 
     // ==========================================
-    // MCP Remote Endpoint (/mcp)
+    // MCP Remote Endpoint (/mcp or /mcp/<TOKEN>)
     // ==========================================
     if (isMcpRoute) {
+        // Handle GET probes (Gemini / SSE verification)
+        if (request.method === 'GET') {
+            const endpointPath = url.pathname + (url.search || '');
+            const ssePayload = `: connected\n\nevent: endpoint\ndata: ${endpointPath}\n\n`;
+            return new Response(ssePayload, {
+                status: 200,
+                headers: {
+                    'Content-Type': 'text/event-stream',
+                    'Cache-Control': 'no-cache, no-transform',
+                    'Connection': 'keep-alive',
+                    ...corsHeaders
+                }
+            });
+        }
+
         const server = createSmpgMcpServer(geminiKey, customRenderer);
         const transport = new WebStandardStreamableHTTPServerTransport({
             sessionIdGenerator: undefined, // stateless mode for Cloudflare
@@ -154,12 +182,21 @@ export async function onRequest(context) {
 
         await server.connect(transport);
 
-        // Normalize Accept header so standard curl and MCP clients succeed with JSON or SSE
+        // Normalize missing, wildcard, or restricted Accept / Content-Type headers for MCP clients
         let reqForMcp = request;
         const accept = request.headers.get('accept') || '';
-        if (!accept.includes('application/json') || !accept.includes('text/event-stream')) {
+        const contentType = request.headers.get('content-type') || '';
+        const needsAcceptFix = !accept.includes('application/json') || !accept.includes('text/event-stream');
+        const needsContentTypeFix = request.method === 'POST' && !contentType.includes('application/json');
+
+        if (needsAcceptFix || needsContentTypeFix) {
             const newHeaders = new Headers(request.headers);
-            newHeaders.set('accept', 'application/json, text/event-stream');
+            if (needsAcceptFix) {
+                newHeaders.set('accept', 'application/json, text/event-stream');
+            }
+            if (needsContentTypeFix) {
+                newHeaders.set('content-type', 'application/json');
+            }
             reqForMcp = new Request(request, { headers: newHeaders });
         }
 

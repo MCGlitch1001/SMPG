@@ -68,7 +68,7 @@ Agents must dynamically query capabilities rather than assuming hardcoded states
   ```
 - **Local MCP Tool (stdio)**: Run `smpg mcp` or `node src/mcp/server.js` and call `smpg_help` to inspect schemas, categories, and presets.
 - **Remote MCP Server (Express / SSE)**: Connect remote MCP clients to `GET http://localhost:3000/mcp/sse` (accepts `Authorization: Bearer <KEY>` or `?apiKey=<KEY>`), posting messages to `/mcp/messages`.
-- **Serverless Remote MCP (Cloudflare Pages Functions)**: Connect to `https://<project>.pages.dev/mcp?token=<SMPG_AUTH_TOKEN>` using standard MCP HTTP transport.
+- **Serverless Remote MCP (Cloudflare Pages Functions)**: Connect to `https://<project>.pages.dev/mcp/<SMPG_AUTH_TOKEN>` or `https://<project>.pages.dev/mcp?token=<SMPG_AUTH_TOKEN>` using standard MCP HTTP transport.
 - **REST API**: `GET http://localhost:3000/api/help` or `GET https://<project>.pages.dev/api/help`
 
 ### Serverless Cloudflare Pages Deployment & Security
@@ -80,16 +80,18 @@ The SMPG repository is 100% serverless-ready for Cloudflare Pages on the free ti
 - **Serverless Slide Renderer**: Powered by WebAssembly (`@cf-wasm/satori` + `@cf-wasm/resvg`), rendering identical typography and layout in isolate memory with zero Node.js binary dependencies. Fonts are served via `env.ASSETS.fetch` without bloating the Worker bundle.
 - **Token Protection (`SMPG_AUTH_TOKEN`)**:
   - All `/api/*` (except `GET /api/health`) and `/mcp` endpoints require token authentication when `SMPG_AUTH_TOKEN` is configured.
-  - Accepted via header `Authorization: Bearer <TOKEN>`, `x-smpg-token: <TOKEN>`, or query parameter `?token=<TOKEN>`.
+  - Accepted via clean path segment `/mcp/<TOKEN>` (required for Google Gemini custom MCP connectors), header `Authorization: Bearer <TOKEN>`, `x-smpg-token: <TOKEN>`, or query parameter `?token=<TOKEN>`.
   - Configure via Wrangler CLI:
     ```bash
     npx wrangler pages secret put SMPG_AUTH_TOKEN
     ```
 - **Remote MCP Endpoint**:
   ```
-  https://<project>.pages.dev/mcp?token=<SMPG_AUTH_TOKEN>
+  https://<project>.pages.dev/mcp/<SMPG_AUTH_TOKEN>
   ```
-  Connect autonomous agents (Claude Desktop, Cursor, n8n, Hermes) directly using Streamable HTTP transport. Pass optional Gemini keys per-request via `x-gemini-api-key: <KEY>` header or `?apiKey=<KEY>` query parameter.
+  *(or `https://<project>.pages.dev/mcp?token=<SMPG_AUTH_TOKEN>`)*
+
+  Connect autonomous agents (Google Gemini Custom MCP Connector, Claude Desktop, Cursor, n8n, Hermes) directly using Streamable HTTP transport. Pass optional Gemini keys per-request via `x-gemini-api-key: <KEY>` header or `?apiKey=<KEY>` query parameter.
 
 ### CLI Execution Quick Reference
 
