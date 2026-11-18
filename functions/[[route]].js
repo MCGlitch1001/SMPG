@@ -269,7 +269,7 @@ export async function onRequest(context) {
             });
         }
 
-        const server = createSmpgMcpServer(geminiKey, customRenderer);
+        const server = createSmpgMcpServer(geminiKey, customRenderer, url.origin);
         const transport = new WebStandardStreamableHTTPServerTransport({
             sessionIdGenerator: undefined, // stateless mode for Cloudflare
             enableJsonResponse: true

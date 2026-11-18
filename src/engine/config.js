@@ -128,3 +128,31 @@ export function resolveApiKey(explicitKeyOrReq = null) {
 
     return "";
 }
+
+/**
+ * Resolve Base URL in priority order:
+ * 1. Explicit baseUrl argument (string)
+ * 2. process.env.PUBLIC_BASE_URL, process.env.SMPG_BASE_URL, process.env.BASE_URL
+ * 3. Local config baseUrl (if configured in .smpg_config.json)
+ * 4. Fallback default (http://localhost:3000 if fallbackToDefault=true, else "")
+ */
+export function resolveBaseUrl(explicitBaseUrl = null, fallbackToDefault = true) {
+    if (typeof explicitBaseUrl === 'string' && explicitBaseUrl.trim()) {
+        return explicitBaseUrl.trim().replace(/\/+$/, '');
+    }
+
+    const envUrl = process.env.PUBLIC_BASE_URL || process.env.SMPG_BASE_URL || process.env.BASE_URL;
+    if (envUrl && typeof envUrl === 'string' && envUrl.trim()) {
+        return envUrl.trim().replace(/\/+$/, '');
+    }
+
+    if (!isProduction) {
+        const config = loadConfig();
+        if (config.baseUrl && typeof config.baseUrl === 'string' && config.baseUrl.trim()) {
+            return config.baseUrl.trim().replace(/\/+$/, '');
+        }
+    }
+
+    return fallbackToDefault ? 'http://localhost:3000' : '';
+}
+

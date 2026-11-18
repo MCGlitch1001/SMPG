@@ -51,7 +51,7 @@ const mcpSessions = new Map();
 app.get('/mcp/sse', async (req, res) => {
     try {
         const sessionApiKey = extractApiKeyFromRequest(req);
-        const server = createSmpgMcpServer(sessionApiKey);
+        const server = createSmpgMcpServer(sessionApiKey, null, getBaseUrl(req));
         const transport = new SSEServerTransport('/mcp/messages', res);
 
         mcpSessions.set(transport.sessionId, { transport, server });

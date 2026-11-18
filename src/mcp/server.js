@@ -12,7 +12,7 @@ import defaultWorkflowSchema from '../engine/workflow-schema-data.js';
 import { executeWorkflow } from '../engine/workflow.js';
 import { VIBE_PRESETS, PRO_PALETTE, FONT_PROFILES } from '../engine/presets.js';
 import { getAgentHelp } from '../engine/help.js';
-import { setApiKey, clearApiKey, resolveApiKey } from '../engine/config.js';
+import { setApiKey, clearApiKey, resolveApiKey, resolveBaseUrl } from '../engine/config.js';
 import { listCategories } from '../engine/database.js';
 
 async function getDefaultRenderer() {
@@ -31,7 +31,7 @@ try {
  * Factory function to create an MCP Server instance with optional session-scoped API key and renderer.
  * Used for local stdio, Node Express SSE, and Cloudflare Pages Functions WebStandard HTTP.
  */
-export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null) {
+export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null, defaultBaseUrl = null) {
     const server = new Server(
         {
             name: 'smpg-agent-engine',
@@ -44,7 +44,7 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
         }
     );
 
-    // Register all 7 tools
+    // Register all 8 tools
     server.setRequestHandler(ListToolsRequestSchema, async () => {
         return {
             tools: [
@@ -65,6 +65,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                             workflow: {
                                 type: 'object',
                                 description: 'Complete workflow object following smpg.workflow schema'
+                            },
+                            baseUrl: {
+                                type: 'string',
+                                description: 'Optional base URL override for direct image URLs (e.g. https://<project>.pages.dev)'
                             }
                         },
                         required: ['workflow']
@@ -72,13 +76,13 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                 },
                 {
                     name: 'smpg_generate_post',
-                    description: 'Fast convenience tool to generate social media carousels or reels. Supports AI generation, local database quotes, custom JSON quotes, AI backgrounds, plain colors, or custom images.',
+                    description: 'Fast convenience tool to generate social media carousels or reels. Supports AI generation, local database quotes, custom JSON quotes, AI backgrounds, plain colors, or custom images. Returns slides with 5-minute direct image URLs.',
                     inputSchema: {
                         type: 'object',
                         properties: {
                             topic: {
                                 type: 'string',
-                                description: 'Core topic or niche concept e.g. "Stoic discipline in chaos"'
+                                description: 'Core topic or niche concept e.g. "Stoic discipline in chaos" (optional if contentSource is "db" or "json")'
                             },
                             format: {
                                 type: 'string',
@@ -119,6 +123,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                                 default: '#09090b',
                                 description: "Hex color if bgType is 'plain'"
                             },
+                            backgroundPrompt: {
+                                type: 'string',
+                                description: "Custom visual prompt for AI generated background when bgType is 'ai' (e.g. 'dark moody brutalist architecture, neon ambient lighting')"
+                            },
                             imageUrl: {
                                 type: 'string',
                                 description: "Remote image URL if bgType is 'custom'"
@@ -126,6 +134,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                             imagePath: {
                                 type: 'string',
                                 description: "Local file path if bgType is 'custom'"
+                            },
+                            imageBase64: {
+                                type: 'string',
+                                description: "Custom background image as Base64 data URI string"
                             },
                             fontProfile: {
                                 type: 'string',
@@ -136,17 +148,83 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                                 type: 'string',
                                 description: 'Handle/watermark displayed on slide e.g. @discipline.archive'
                             },
+                            baseUrl: {
+                                type: 'string',
+                                description: 'Base URL for generating absolute direct image URLs (e.g. https://<project>.pages.dev or http://localhost:3000)'
+                            },
+                            returnBase64: {
+                                type: 'boolean',
+                                default: true,
+                                description: 'Whether to include base64 image data URIs in slide results'
+                            },
+                            saveImages: {
+                                type: 'boolean',
+                                default: true,
+                                description: 'Whether to save rendered PNG slides to disk'
+                            },
                             apiKey: {
                                 type: 'string',
                                 description: 'Optional Gemini API key override'
                             }
+                        }
+                    }
+                },
+                {
+                    name: 'smpg_get_image_url',
+                    description: 'Instant zero-latency tool to create a 5-minute ephemeral direct image URL for a slide quote without waiting for rendering or disk writes. Returns a valid public image URL suitable for webhooks, auto-uploaders, and media previews.',
+                    inputSchema: {
+                        type: 'object',
+                        properties: {
+                            quote: {
+                                type: 'string',
+                                description: 'The quote text to typeset on the slide'
+                            },
+                            format: {
+                                type: 'string',
+                                enum: ['carousel', 'reel'],
+                                default: 'carousel',
+                                description: 'Post format: square carousel (1:1) or vertical reel (9:16)'
+                            },
+                            bgColor: {
+                                type: 'string',
+                                default: '#09090b',
+                                description: "Hex background color (e.g. '#09090b')"
+                            },
+                            imageUrl: {
+                                type: 'string',
+                                description: 'Optional remote background image URL'
+                            },
+                            fontProfile: {
+                                type: 'string',
+                                enum: ['BigShoulders', 'Outfit', 'Lora', 'GeistMono', 'Bricolage', 'Crimson'],
+                                default: 'BigShoulders',
+                                description: 'Typography font profile'
+                            },
+                            watermark: {
+                                type: 'string',
+                                description: 'Watermark or brand tag e.g. @discipline.archive'
+                            },
+                            slideIndex: {
+                                type: 'integer',
+                                default: 0,
+                                description: '0-indexed slide position'
+                            },
+                            totalSlides: {
+                                type: 'integer',
+                                default: 1,
+                                description: 'Total number of slides in post'
+                            },
+                            baseUrl: {
+                                type: 'string',
+                                description: 'Optional base URL override (e.g. https://<project>.pages.dev or http://localhost:3000)'
+                            }
                         },
-                        required: ['topic']
+                        required: ['quote']
                     }
                 },
                 {
                     name: 'smpg_render_slide',
-                    description: 'Render a single slide with custom text quote, styling, and background color or image.',
+                    description: 'Render a single slide with custom text quote, styling, and background color or image. Returns rendered buffer, base64, and a 5-minute direct image URL.',
                     inputSchema: {
                         type: 'object',
                         properties: {
@@ -163,6 +241,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                                 type: 'string',
                                 default: '#09090b'
                             },
+                            imageUrl: {
+                                type: 'string',
+                                description: 'Optional remote background image URL'
+                            },
                             fontProfile: {
                                 type: 'string',
                                 enum: ['BigShoulders', 'Outfit', 'Lora', 'GeistMono', 'Bricolage', 'Crimson'],
@@ -171,6 +253,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                             watermark: {
                                 type: 'string',
                                 description: 'Watermark tag'
+                            },
+                            baseUrl: {
+                                type: 'string',
+                                description: 'Base URL for generating absolute direct image URLs (e.g. https://<project>.pages.dev)'
                             },
                             outputPath: {
                                 type: 'string',
@@ -262,11 +348,12 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
 
             if (name === 'smpg_run_workflow') {
                 const workflow = args.workflow || {};
+                const resolvedBaseUrl = resolveBaseUrl(args.baseUrl || workflow.baseUrl || defaultBaseUrl);
                 if (!workflow.generator) workflow.generator = {};
                 if (!workflow.generator.apiKey && defaultApiKey) {
                     workflow.generator.apiKey = defaultApiKey;
                 }
-                const result = await executeWorkflow(workflow, { customRenderer });
+                const result = await executeWorkflow(workflow, { baseUrl: resolvedBaseUrl, customRenderer });
                 return {
                     content: [
                         {
@@ -278,11 +365,15 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
             }
 
             if (name === 'smpg_generate_post') {
+                const resolvedTopic = args.topic || args.dbCategory || (args.quotes && args.quotes[0]) || VIBE_PRESETS[0];
+                const resolvedBaseUrl = resolveBaseUrl(args.baseUrl || defaultBaseUrl);
+
                 const workflowSpec = {
-                    name: `Agent-${(args.topic || 'post').slice(0, 20)}`,
+                    name: `Agent-${resolvedTopic.slice(0, 20)}`,
                     format: args.format || 'carousel',
+                    baseUrl: resolvedBaseUrl,
                     input: {
-                        topic: args.topic,
+                        topic: resolvedTopic,
                         numPosts: 1,
                         slidesPerPost: args.slidesPerPost || (args.format === 'reel' ? 1 : 3),
                         contentSource: args.contentSource,
@@ -290,8 +381,10 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                         quotes: args.quotes || null,
                         bgType: args.bgType,
                         bgColor: args.bgColor || '#09090b',
+                        backgroundPrompt: args.backgroundPrompt || null,
                         imageUrl: args.imageUrl || null,
-                        imagePath: args.imagePath || null
+                        imagePath: args.imagePath || null,
+                        imageBase64: args.imageBase64 || null
                     },
                     theme: {
                         fontProfile: args.fontProfile || 'BigShoulders',
@@ -302,13 +395,13 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                     },
                     output: {
                         directory: DEFAULT_OUTPUT_DIR,
-                        saveImages: true,
+                        saveImages: args.saveImages !== false,
                         generateCaptions: true,
-                        returnBase64: true
+                        returnBase64: args.returnBase64 !== undefined ? Boolean(args.returnBase64) : true
                     }
                 };
 
-                const result = await executeWorkflow(workflowSpec, { customRenderer });
+                const result = await executeWorkflow(workflowSpec, { baseUrl: resolvedBaseUrl, customRenderer });
                 return {
                     content: [
                         {
@@ -319,14 +412,58 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                 };
             }
 
+            if (name === 'smpg_get_image_url') {
+                const resolvedBaseUrl = resolveBaseUrl(args.baseUrl || defaultBaseUrl);
+                const expTimestamp = Date.now() + 5 * 60 * 1000;
+                const slidePayload = {
+                    q: args.quote || '',
+                    bg: args.bgColor || '#09090b',
+                    u: args.imageUrl || null,
+                    m: args.format || 'carousel',
+                    i: args.slideIndex || 0,
+                    t: args.totalSlides || 1,
+                    f: args.fontProfile || 'BigShoulders',
+                    w: args.watermark || null,
+                    exp: expTimestamp
+                };
+
+                const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+                const relativeUrl = `/i/s_${payloadB64}.png`;
+                const directImageUrl = resolvedBaseUrl ? `${resolvedBaseUrl}${relativeUrl}` : relativeUrl;
+
+                return {
+                    content: [
+                        {
+                            type: 'text',
+                            text: JSON.stringify({
+                                success: true,
+                                directImageUrl,
+                                url: directImageUrl,
+                                relativeUrl,
+                                quote: args.quote,
+                                format: args.format || 'carousel',
+                                fontProfile: args.fontProfile || 'BigShoulders',
+                                expiresAt: new Date(expTimestamp).toISOString(),
+                                expiresInSeconds: 300
+                            }, null, 2)
+                        }
+                    ]
+                };
+            }
+
             if (name === 'smpg_render_slide') {
+                const resolvedBaseUrl = resolveBaseUrl(args.baseUrl || defaultBaseUrl);
                 const renderFn = customRenderer || (await getDefaultRenderer());
+                const bgResult = args.imageUrl
+                    ? { type: 'image', url: args.imageUrl }
+                    : { type: 'color', color: args.bgColor || '#09090b' };
+
                 const renderResult = await renderFn({
                     quote: args.quote,
-                    bgResult: { type: 'color', color: args.bgColor || '#09090b' },
+                    bgResult,
                     mode: args.format || 'carousel',
-                    slideIndex: 0,
-                    totalSlides: 1,
+                    slideIndex: args.slideIndex || 0,
+                    totalSlides: args.totalSlides || 1,
                     fontProfile: args.fontProfile || 'BigShoulders',
                     watermark: args.watermark || null
                 });
@@ -350,17 +487,20 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                 const slidePayload = {
                     q: args.quote || '',
                     bg: args.bgColor || '#09090b',
+                    u: args.imageUrl || null,
                     m: args.format || 'carousel',
-                    i: 0,
-                    t: 1,
+                    i: args.slideIndex || 0,
+                    t: args.totalSlides || 1,
                     f: args.fontProfile || 'BigShoulders',
                     w: args.watermark || null,
                     exp: Date.now() + 5 * 60 * 1000
                 };
                 let directUrl = null;
+                let relativeUrl = null;
                 try {
                     const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
-                    directUrl = `/i/s_${payloadB64}.png`;
+                    relativeUrl = `/i/s_${payloadB64}.png`;
+                    directUrl = resolvedBaseUrl ? `${resolvedBaseUrl}${relativeUrl}` : relativeUrl;
                 } catch {}
 
                 return {
@@ -372,6 +512,7 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                                 outputPath,
                                 url: directUrl,
                                 directImageUrl: directUrl,
+                                relativeUrl,
                                 bytes: buffer?.length || 0,
                                 base64
                             }, null, 2)

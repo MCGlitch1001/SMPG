@@ -10,7 +10,7 @@ Designed specifically for **AI Agents (Hermes Agent, Claude, Cursor, Antigravity
 
 - **Zero HTML / DOM dependencies**: Image typesetting and slide rendering run 100% server-side via high-performance Rust canvas (`@napi-rs/canvas`).
 - **Declarative Workflow Language**: Control posts, slides, quotes, typography, and backgrounds via structured JSON/YAML specifications validated against JSON Schema.
-- **Model Context Protocol (MCP)**: Native stdio MCP server exposing `smpg_generate_post`, `smpg_run_workflow`, `smpg_render_slide`, and `smpg_list_presets`.
+- **Model Context Protocol (MCP)**: Native stdio, SSE, and serverless MCP exposing `smpg_generate_post`, `smpg_get_image_url`, `smpg_render_slide`, `smpg_run_workflow`, and `smpg_list_presets` with 5-minute ephemeral direct image URLs for automated publishing.
 - **N8N Ready**: Built-in HTTP REST & Webhook server (`/api/generate`, `/api/workflow/run`) and an importable N8N workflow template (`integrations/n8n/smpg_n8n_workflow.json`).
 - **Hermes Agent Tools**: Pre-configured OpenAI/Hermes function calling definitions in `integrations/hermes/hermes_tools.json`.
 - **Bundled Typography**: Includes high-impact typography fonts (`BigShoulders`, `Outfit`, `Lora`, `GeistMono`, `Crimson`, `BricolageGrotesque`).

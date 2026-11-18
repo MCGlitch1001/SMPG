@@ -5,7 +5,7 @@ import { generateContent, saveUsedQuotes } from './text-generator.js';
 import { getBackgroundImage } from './image-generator.js';
 import { generateCaption } from './caption-generator.js';
 import { VIBE_PRESETS, FONT_PROFILES } from './presets.js';
-import { resolveApiKey } from './config.js';
+import { resolveApiKey, resolveBaseUrl } from './config.js';
 
 async function getDefaultRenderer() {
     const mod = await import(String('./renderer.js'));
@@ -33,6 +33,10 @@ export async function executeWorkflow(spec = {}, baseUrlOrOptions = "", customRe
     } else {
         baseUrl = baseUrlOrOptions || "";
         customRenderer = customRendererArg || null;
+    }
+
+    if (!baseUrl) {
+        baseUrl = resolveBaseUrl(spec.baseUrl || null);
     }
 
     if (!customRenderer && spec.customRenderer) {
@@ -184,9 +188,11 @@ export async function executeWorkflow(spec = {}, baseUrlOrOptions = "", customRe
                 exp: Date.now() + 5 * 60 * 1000
             };
             let directUrl = null;
+            let relativeUrl = null;
             try {
                 const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
-                directUrl = baseUrl ? `${baseUrl}/i/s_${payloadB64}.png` : `/i/s_${payloadB64}.png`;
+                relativeUrl = `/i/s_${payloadB64}.png`;
+                directUrl = baseUrl ? `${baseUrl}${relativeUrl}` : relativeUrl;
             } catch {}
 
             const slideItem = {
@@ -195,7 +201,8 @@ export async function executeWorkflow(spec = {}, baseUrlOrOptions = "", customRe
                 fileName,
                 filePath: (saveImages && slideBuffer) ? filePath : null,
                 url: directUrl || (baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`),
-                directImageUrl: directUrl || (baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`)
+                directImageUrl: directUrl || (baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`),
+                relativeUrl: relativeUrl || `/output/${fileName}`
             };
 
             if (returnBase64 || slideBase64) {

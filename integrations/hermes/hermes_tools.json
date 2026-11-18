@@ -82,9 +82,76 @@
           "apiKey": {
             "type": "string",
             "description": "Optional Gemini API key override"
+          },
+          "baseUrl": {
+            "type": "string",
+            "description": "Base URL for generating absolute direct image URLs (e.g. https://<project>.pages.dev or http://localhost:3000)"
+          },
+          "backgroundPrompt": {
+            "type": "string",
+            "description": "Custom visual prompt for AI generated background when bgType is 'ai'"
+          },
+          "imageBase64": {
+            "type": "string",
+            "description": "Custom background image as Base64 data URI string"
           }
-        },
-        "required": ["topic"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "smpg_get_image_url",
+        "description": "Instant zero-latency tool to create a 5-minute ephemeral direct image URL for a slide quote without waiting for rendering or disk writes. Returns a valid public image URL suitable for webhooks, auto-uploaders, and media previews.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "quote": {
+              "type": "string",
+              "description": "The quote text to typeset on the slide"
+            },
+            "format": {
+              "type": "string",
+              "enum": ["carousel", "reel"],
+              "default": "carousel",
+              "description": "Post format: square carousel (1:1) or vertical reel (9:16)"
+            },
+            "bgColor": {
+              "type": "string",
+              "default": "#09090b",
+              "description": "Hex background color (e.g. '#09090b')"
+            },
+            "imageUrl": {
+              "type": "string",
+              "description": "Optional remote background image URL"
+            },
+            "fontProfile": {
+              "type": "string",
+              "enum": ["BigShoulders", "Outfit", "Lora", "GeistMono", "Bricolage", "Crimson"],
+              "default": "BigShoulders",
+              "description": "Typography font profile"
+            },
+            "watermark": {
+              "type": "string",
+              "description": "Watermark or brand tag e.g. @discipline.archive"
+            },
+            "slideIndex": {
+              "type": "integer",
+              "default": 0,
+              "description": "0-indexed slide position"
+            },
+            "totalSlides": {
+              "type": "integer",
+              "default": 1,
+              "description": "Total number of slides in post"
+            },
+            "baseUrl": {
+              "type": "string",
+              "description": "Optional base URL override (e.g. https://<project>.pages.dev or http://localhost:3000)"
+            }
+          },
+          "required": ["quote"]
+        }
       }
     }
   },

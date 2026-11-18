@@ -71,6 +71,18 @@ Agents must dynamically query capabilities rather than assuming hardcoded states
 - **Serverless Remote MCP (Cloudflare Pages Functions)**: Connect to `https://<project>.pages.dev/mcp/<SMPG_AUTH_TOKEN>` or `https://<project>.pages.dev/mcp?token=<SMPG_AUTH_TOKEN>` using standard MCP HTTP transport.
 - **REST API**: `GET http://localhost:3000/api/help` or `GET https://<project>.pages.dev/api/help`
 
+### MCP Tools Catalog for Agents
+
+The SMPG MCP Server exposes 8 specialized tools:
+1. `smpg_generate_post`: Fast generation of carousels and reels. Supports AI generation, local database quotes (`contentSource: "db"`), explicit quotes (`contentSource: "json"`), AI backgrounds, solid dark colors, or custom images. Returns slides with guaranteed 5-minute ephemeral direct image URLs (`directImageUrl` and `url`).
+2. `smpg_get_image_url`: Instant zero-latency tool to create a 5-minute ephemeral direct image URL (`https://<domain>/i/s_<payload>.png`) for a quote without waiting for rendering or disk writes. Ideal for webhooks, auto-uploaders (Instagram, Telegram, Twitter), and media previews.
+3. `smpg_render_slide`: Render a single custom slide. Returns image buffer, base64 data URI, and a direct image URL.
+4. `smpg_run_workflow`: Full declarative workflow spec execution.
+5. `smpg_help`: Machine-readable agent self-discovery guide.
+6. `smpg_list_presets`: Available vibe presets, database categories, and font profiles.
+7. `smpg_manage_config`: Store, inspect, or clear the Gemini API key in local app configuration.
+8. `smpg_get_schema`: Full JSON schema for workflow validation.
+
 ### Serverless Cloudflare Pages Deployment & Security
 
 The SMPG repository is 100% serverless-ready for Cloudflare Pages on the free tier:

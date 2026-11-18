@@ -112,8 +112,9 @@ export function getAgentHelp() {
         mcpTools: [
             { name: "smpg_help", desc: "Agent discovery: returns complete guide, schemas, and endpoints" },
             { name: "smpg_run_workflow", desc: "Execute raw declarative workflow spec" },
-            { name: "smpg_generate_post", desc: "High-level generation tool (topic, format, contentSource, bgType)" },
-            { name: "smpg_render_slide", desc: "Typeset single quote on custom background" },
+            { name: "smpg_generate_post", desc: "High-level generation tool with 5-minute direct image URLs (topic, format, contentSource, bgType)" },
+            { name: "smpg_get_image_url", desc: "Fast zero-latency tool: returns 5-minute ephemeral direct image URL for quote" },
+            { name: "smpg_render_slide", desc: "Typeset single quote on custom background with direct image URL" },
             { name: "smpg_manage_config", desc: "Store, check, or clear API key inside app" },
             { name: "smpg_list_presets", desc: "List vibe presets, database categories, and font profiles" },
             { name: "smpg_get_schema", desc: "Retrieve JSON schema for declarative workflow validation" }
