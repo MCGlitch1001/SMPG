@@ -1,4 +1,5 @@
 import '../src/engine/cf-polyfill.js';
+import { Buffer } from 'node:buffer';
 import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js';
 import { createSmpgMcpServer } from '../src/mcp/server.js';
 import { renderSlideCF } from '../src/engine/renderer-cf.js';
@@ -122,9 +123,103 @@ export async function onRequest(context) {
     // Pass static assets and client-side SPA routes straight to Cloudflare Pages Assets
     const isApiRoute = pathname.startsWith('/api');
     const isMcpRoute = pathname === '/mcp' || pathname.startsWith('/mcp/');
+    const isImageRoute = pathname.startsWith('/i/') || pathname.startsWith('/output/');
 
-    if (!isApiRoute && !isMcpRoute) {
+    if (!isApiRoute && !isMcpRoute && !isImageRoute) {
         return env.ASSETS.fetch(request);
+    }
+
+    // ==========================================
+    // Public Ephemeral Image Delivery (/i/* and /output/*)
+    // 100% Free - 5-min TTL for Instagram Auto-Uploaders & Webhooks
+    // ==========================================
+    if (isImageRoute && request.method === 'GET') {
+        const cache = typeof caches !== 'undefined' ? caches.default : null;
+
+        // 1. Check Cloudflare Edge Cache first
+        if (cache) {
+            try {
+                const cached = await cache.match(request.url);
+                if (cached) {
+                    return cached;
+                }
+            } catch {}
+        }
+
+        // 2. Check KV Storage if bound
+        const idWithExt = pathname.split('/').pop() || '';
+        const rawId = idWithExt.replace(/\.(png|jpg|jpeg|webp)$/i, '');
+
+        if (env.SMPG_KV) {
+            try {
+                const kvBuffer = await env.SMPG_KV.get(rawId, 'arrayBuffer');
+                if (kvBuffer) {
+                    return new Response(kvBuffer, {
+                        status: 200,
+                        headers: {
+                            'Content-Type': 'image/png',
+                            'Content-Length': String(kvBuffer.byteLength),
+                            'Cache-Control': 'public, max-age=300, s-maxage=300',
+                            ...corsHeaders
+                        }
+                    });
+                }
+            } catch {}
+        }
+
+        // 3. Fallback: Self-Contained Encoded Slide Payload (s_<base64url>)
+        if (rawId.startsWith('s_')) {
+            try {
+                const payloadJson = Buffer.from(rawId.slice(2), 'base64url').toString('utf-8');
+                const p = JSON.parse(payloadJson);
+
+                // Enforce 5-minute TTL (with 60-second grace buffer)
+                if (p.exp && Date.now() > p.exp + 60000) {
+                    return jsonResponse({
+                        error: 'Image Expired',
+                        message: 'This direct image URL was valid for 5 minutes and has expired. Generate a fresh image for your auto-upload workflow.'
+                    }, 410);
+                }
+
+                const fontLoader = createCloudflareFontLoader(env);
+                const renderRes = await renderSlideCF({
+                    quote: p.q || '',
+                    bgResult: p.u ? { type: 'image', url: p.u } : { type: 'color', color: p.bg || '#09090b' },
+                    mode: p.m || 'carousel',
+                    slideIndex: p.i || 0,
+                    totalSlides: p.t || 1,
+                    fontProfile: p.f || 'BigShoulders',
+                    watermark: p.w || null,
+                    fontLoader
+                });
+
+                if (renderRes?.buffer) {
+                    const imgResp = new Response(renderRes.buffer, {
+                        status: 200,
+                        headers: {
+                            'Content-Type': 'image/png',
+                            'Content-Length': String(renderRes.buffer.byteLength || renderRes.buffer.length),
+                            'Cache-Control': 'public, max-age=300, s-maxage=300',
+                            ...corsHeaders
+                        }
+                    });
+
+                    // Cache in Cloudflare Edge Cache for subsequent crawler hits
+                    if (cache && context.waitUntil) {
+                        context.waitUntil(cache.put(request.url, imgResp.clone()));
+                    }
+
+                    return imgResp;
+                }
+            } catch (err) {
+                console.error('[ImageRoute Error]:', err);
+            }
+        }
+
+        return jsonResponse({
+            error: 'Image Not Found',
+            message: 'Image does not exist or has expired.'
+        }, 404);
     }
 
     // 1. Healthcheck is always open without token
@@ -291,6 +386,46 @@ export async function onRequest(context) {
                 fontLoader
             });
 
+            // Attach 5-minute direct public image URLs for auto-uploaders
+            const cache = typeof caches !== 'undefined' ? caches.default : null;
+            for (const post of result.posts || []) {
+                for (const slide of post.slides || []) {
+                    const slidePayload = {
+                        q: slide.quote,
+                        bg: post.backgroundSource || '#09090b',
+                        u: post.backgroundType === 'image' && typeof post.backgroundSource === 'string' && post.backgroundSource.startsWith('http') ? post.backgroundSource : null,
+                        m: post.mode || 'carousel',
+                        i: (slide.slideIndex || 1) - 1,
+                        t: post.slides.length,
+                        f: workflowSpec.theme?.fontProfile || 'BigShoulders',
+                        w: workflowSpec.theme?.watermark || null,
+                        exp: Date.now() + 5 * 60 * 1000 // 5 minutes TTL
+                    };
+                    const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+                    const directUrl = `${url.origin}/i/s_${payloadB64}.png`;
+                    slide.url = directUrl;
+                    slide.directImageUrl = directUrl;
+
+                    if (slide.base64 && cache && context.waitUntil) {
+                        try {
+                            const rawBytes = Uint8Array.from(atob(slide.base64.replace(/^data:image\/png;base64,/, '')), c => c.charCodeAt(0));
+                            const imgResp = new Response(rawBytes, {
+                                status: 200,
+                                headers: {
+                                    'Content-Type': 'image/png',
+                                    'Content-Length': String(rawBytes.length),
+                                    'Cache-Control': 'public, max-age=300, s-maxage=300',
+                                    ...corsHeaders
+                                }
+                            });
+                            context.waitUntil(cache.put(directUrl, imgResp.clone()));
+                            const outUrl = `${url.origin}/output/${slide.fileName}`;
+                            context.waitUntil(cache.put(outUrl, imgResp.clone()));
+                        } catch {}
+                    }
+                }
+            }
+
             return jsonResponse(result);
         } catch (err) {
             console.error('[Cloudflare /api/generate Error]:', err);
@@ -318,6 +453,46 @@ export async function onRequest(context) {
                 fontLoader
             });
 
+            // Attach 5-minute direct public image URLs
+            const cache = typeof caches !== 'undefined' ? caches.default : null;
+            for (const post of result.posts || []) {
+                for (const slide of post.slides || []) {
+                    const slidePayload = {
+                        q: slide.quote,
+                        bg: post.backgroundSource || '#09090b',
+                        u: post.backgroundType === 'image' && typeof post.backgroundSource === 'string' && post.backgroundSource.startsWith('http') ? post.backgroundSource : null,
+                        m: post.mode || 'carousel',
+                        i: (slide.slideIndex || 1) - 1,
+                        t: post.slides.length,
+                        f: workflowSpec.theme?.fontProfile || 'BigShoulders',
+                        w: workflowSpec.theme?.watermark || null,
+                        exp: Date.now() + 5 * 60 * 1000 // 5 minutes TTL
+                    };
+                    const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+                    const directUrl = `${url.origin}/i/s_${payloadB64}.png`;
+                    slide.url = directUrl;
+                    slide.directImageUrl = directUrl;
+
+                    if (slide.base64 && cache && context.waitUntil) {
+                        try {
+                            const rawBytes = Uint8Array.from(atob(slide.base64.replace(/^data:image\/png;base64,/, '')), c => c.charCodeAt(0));
+                            const imgResp = new Response(rawBytes, {
+                                status: 200,
+                                headers: {
+                                    'Content-Type': 'image/png',
+                                    'Content-Length': String(rawBytes.length),
+                                    'Cache-Control': 'public, max-age=300, s-maxage=300',
+                                    ...corsHeaders
+                                }
+                            });
+                            context.waitUntil(cache.put(directUrl, imgResp.clone()));
+                            const outUrl = `${url.origin}/output/${slide.fileName}`;
+                            context.waitUntil(cache.put(outUrl, imgResp.clone()));
+                        } catch {}
+                    }
+                }
+            }
+
             return jsonResponse(result);
         } catch (err) {
             console.error('[Cloudflare /api/workflow/run Error]:', err);
@@ -339,9 +514,42 @@ export async function onRequest(context) {
                 watermark: body.watermark || null
             });
 
+            const slidePayload = {
+                q: body.quote || "EXECUTE IN SILENCE.",
+                bg: body.bgColor || '#09090b',
+                u: body.imageUrl || null,
+                m: body.format || "carousel",
+                i: 0,
+                t: 1,
+                f: body.fontProfile || "BigShoulders",
+                w: body.watermark || null,
+                exp: Date.now() + 5 * 60 * 1000
+            };
+            const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+            const directUrl = `${url.origin}/i/s_${payloadB64}.png`;
+
+            const cache = typeof caches !== 'undefined' ? caches.default : null;
+            if (renderResult?.base64 && cache && context.waitUntil) {
+                try {
+                    const rawBytes = Uint8Array.from(atob(renderResult.base64.replace(/^data:image\/png;base64,/, '')), c => c.charCodeAt(0));
+                    const imgResp = new Response(rawBytes, {
+                        status: 200,
+                        headers: {
+                            'Content-Type': 'image/png',
+                            'Content-Length': String(rawBytes.length),
+                            'Cache-Control': 'public, max-age=300, s-maxage=300',
+                            ...corsHeaders
+                        }
+                    });
+                    context.waitUntil(cache.put(directUrl, imgResp.clone()));
+                } catch {}
+            }
+
             return jsonResponse({
                 success: true,
                 fileName: renderResult.fileName,
+                url: directUrl,
+                directImageUrl: directUrl,
                 base64: renderResult.base64
             });
         } catch (err) {

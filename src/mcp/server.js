@@ -347,6 +347,22 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                     } catch {}
                 }
 
+                const slidePayload = {
+                    q: args.quote || '',
+                    bg: args.bgColor || '#09090b',
+                    m: args.format || 'carousel',
+                    i: 0,
+                    t: 1,
+                    f: args.fontProfile || 'BigShoulders',
+                    w: args.watermark || null,
+                    exp: Date.now() + 5 * 60 * 1000
+                };
+                let directUrl = null;
+                try {
+                    const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+                    directUrl = `/i/s_${payloadB64}.png`;
+                } catch {}
+
                 return {
                     content: [
                         {
@@ -354,6 +370,8 @@ export function createSmpgMcpServer(defaultApiKey = null, customRenderer = null)
                             text: JSON.stringify({
                                 success: true,
                                 outputPath,
+                                url: directUrl,
+                                directImageUrl: directUrl,
                                 bytes: buffer?.length || 0,
                                 base64
                             }, null, 2)

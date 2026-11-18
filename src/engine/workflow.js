@@ -172,12 +172,30 @@ export async function executeWorkflow(spec = {}, baseUrlOrOptions = "", customRe
                 } catch {}
             }
 
+            const slidePayload = {
+                q: quote,
+                bg: bgResult.source || bgResult.color || '#09090b',
+                u: (bgResult.mode === 'image' && typeof bgResult.source === 'string' && bgResult.source.startsWith('http')) ? bgResult.source : null,
+                m: mode,
+                i: sIdx,
+                t: quotes.length,
+                f: fontProfile,
+                w: watermark,
+                exp: Date.now() + 5 * 60 * 1000
+            };
+            let directUrl = null;
+            try {
+                const payloadB64 = Buffer.from(JSON.stringify(slidePayload)).toString('base64url');
+                directUrl = baseUrl ? `${baseUrl}/i/s_${payloadB64}.png` : `/i/s_${payloadB64}.png`;
+            } catch {}
+
             const slideItem = {
                 slideIndex: slideNum,
                 quote,
                 fileName,
                 filePath: (saveImages && slideBuffer) ? filePath : null,
-                url: baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`
+                url: directUrl || (baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`),
+                directImageUrl: directUrl || (baseUrl ? `${baseUrl}/output/${fileName}` : `/output/${fileName}`)
             };
 
             if (returnBase64 || slideBase64) {

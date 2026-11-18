@@ -304,9 +304,34 @@ app.post('/api/render', async (req, res) => {
 });
 
 // ==========================================
-// 3. Static Asset Delivery (/output)
+// 3. Static & Dynamic Ephemeral Image Delivery (/i, /output)
 // ==========================================
+app.get(['/i/:id', '/output/:id'], async (req, res, next) => {
+    const rawId = (req.params.id || '').replace(/\.(png|jpg|jpeg|webp)$/i, '');
+    if (rawId.startsWith('s_')) {
+        try {
+            const p = JSON.parse(Buffer.from(rawId.slice(2), 'base64url').toString('utf8'));
+            const renderRes = await renderSlide({
+                quote: p.q || '',
+                bgResult: p.u ? { type: 'image', url: p.u } : { type: 'color', color: p.bg || '#09090b' },
+                mode: p.m || 'carousel',
+                slideIndex: p.i || 0,
+                totalSlides: p.t || 1,
+                fontProfile: p.f || 'BigShoulders',
+                watermark: p.w || null
+            });
+            const buffer = renderRes?.buffer || renderRes;
+            res.setHeader('Content-Type', 'image/png');
+            res.setHeader('Cache-Control', 'public, max-age=300');
+            return res.send(buffer);
+        } catch (err) {
+            return res.status(500).json({ error: err.message });
+        }
+    }
+    next();
+});
 app.use('/output', express.static(OUTPUT_DIR));
+app.use('/i', express.static(OUTPUT_DIR));
 
 // ==========================================
 // 4. Built Vite Frontend SPA Delivery
@@ -315,9 +340,9 @@ if (fs.existsSync(DIST_DIR)) {
     app.use(express.static(DIST_DIR));
 }
 
-// Catch-all route for SPA history routing (excluding /api, /mcp, /output)
+// Catch-all route for SPA history routing (excluding /api, /mcp, /output, /i)
 app.get('/{*path}', (req, res, next) => {
-    if (req.path.startsWith('/api') || req.path.startsWith('/mcp') || req.path.startsWith('/output')) {
+    if (req.path.startsWith('/api') || req.path.startsWith('/mcp') || req.path.startsWith('/output') || req.path.startsWith('/i')) {
         return next();
     }
     const indexPath = path.join(DIST_DIR, 'index.html');
